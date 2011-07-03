@@ -12,8 +12,10 @@
   "engines": {
     "node": ">0.4.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "cradle": ">=0.5.5"
+    },
   "devDependencies": {
-    Jody: ">0.1.0"
+    "Jody": ">0.1.0"
     }
 }
