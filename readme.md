@@ -1,7 +1,7 @@
 LazyBoy Object Modeller
 =======================
 
-# What have you done?
+# Oh my word... What have you done?
 
 My experiments into what it takes to create a object mapper for Couchdb. This has been something I've been thinking about for a while and whether its a viable option. 
 
@@ -9,18 +9,38 @@ Currently its purely fun research. I've been reading through [mongoose](https://
 
 #How do I use this thing?
 
-    new Model('User', {
+## Defining a model
+    var Model = require('LazyBoy');
+
+    Model.define('User', {
       name: String
       surname: {type: String, default: "Rambo"}
+    })
+
+## Creating and saving a model
+    
+    var user = Model.create('User', {name: "John", surname: "Rambo"});
+
+    user.save(function (err, saved_user) {
+        // .. do some other stuff here
+    })
+
+## Finding a model
+    var user_id = "123456";
+
+    var User = Model('User');
+    User.find(user_id, function (err, user) {
+        // .. do something with the user
     })
 
 #What needs doing?
 
 Plenty:
 
+* Decent logging
 * Type casting
-* Saving and loading of documents
+* Loading of documents
 * Create query language for finding
-* Save, Create callbacks
+* BeforeSave, BeforeCreate callbacks
 * Validations
 

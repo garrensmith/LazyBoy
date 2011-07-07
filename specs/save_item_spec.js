@@ -31,8 +31,13 @@ it("Should save item into db", function (async) {
     }));
 
   }));
-
-
+}).
+it("Should create id for model if not defined", function (async) {
+    Model('User_no_id', {
+    id: String,
+    name: String,
+    surname: String,
+  });
 }).
 it("Should have a created date", function (async) {
   

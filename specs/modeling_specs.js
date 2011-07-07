@@ -2,20 +2,19 @@ var describe = require('Jody').describe,
     Model = require('../lib/index'),
     assert = require('assert');
 
-
-
-
 describe('Create Model').
   beforeEach(function (done) {
     Model.remove_models();
   }).
   it("Should create basic model given json", function () {
-    var user = Model('User', {
+    var user = Model.define('User', {
+        id: String,
         name: String,
         surname: String,
     });
 
     var raw_user = {
+      id: "garren-smith",
       name: "Garren",
       surname: "Smith"
     };
