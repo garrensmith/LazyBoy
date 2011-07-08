@@ -37,10 +37,10 @@ Currently its purely fun research. I've been reading through [mongoose](https://
 
 Plenty:
 
+* Remove
+* Finding all
 * Decent logging
 * Type casting
-* Loading of documents
-* Create query language for finding
 * BeforeSave, BeforeCreate callbacks
 * Validations
 
