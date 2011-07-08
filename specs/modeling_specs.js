@@ -48,9 +48,6 @@ describe('Create Model').
     };
 
     var created_user = Model('User').create(raw_user);
-
-    console.dir(created_user);
-    Model.dump();
  
     created_user.name.should().beEqual('Garren');
     created_user.surname.should().beEqual('Smith');
@@ -66,8 +63,6 @@ describe('Create Model').
 
     var user = Model('User').create({name:"Kurt",surname: "Cobain", age: 31}); 
     
-    console.log("user create");
-    console.dir(user);
     user.name.should().beEqual("Kurt");
     user.surname.should().beEqual("Cobain");
     user.age.should().beEqual(31);

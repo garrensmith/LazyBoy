@@ -8,8 +8,7 @@ var describe = require('Jody').describe,
 describe("Find document by Id").   
     beforeAll(function (done) {
        db = new(cradle.Connection)().database('lazyboy_tests');
-       User = Model('User', {name: String });
-       console.dir(User);
+       User = Model.define('User', {name: String });
        done();
     }).
     it("Should find saved document by id", function (async) {
@@ -22,8 +21,6 @@ describe("Find document by Id").
                  
            User.find(user_doc.id, async(function (err, user) {
                if (err) throw err;
-               console.log('User');
-               console.dir(user);
                user.id.should().beEqual(user_doc.id);
                user.name.should().beEqual("garren");
            }));
@@ -31,7 +28,7 @@ describe("Find document by Id").
  }).
     it("Should return null for no user with Id", function (async) {
         User.find("unknown", async(function (err, user) {
-          err.should().beEqual("Does not exist");
+          err.error.should().beEqual("not_found");
           assert.equal(user, null);
         }));      
     });

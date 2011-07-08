@@ -8,7 +8,7 @@ describe("Saving Item").
 beforeAll(function (done) {
   db = new(cradle.Connection)().database('lazyboy_tests');
 
-  Model('User', {
+  Model.define('User', {
     id: String,
     name: String,
     surname: String,
@@ -18,10 +18,11 @@ beforeAll(function (done) {
 }).
 it("Should save item into db", function (async) {
   
-  var user = Model.create('User');
-  user.id = "EddieVedder";
-  user.name = "Eddie";
-  user.surname = "Vedder"
+  var user = Model('User').create({
+    id : "EddieVedder",
+    name : "Eddie",
+    surname : "Vedder"
+  });
 
   user.save(async(function (err, result) {
     if (err) throw err;
@@ -34,17 +35,15 @@ it("Should save item into db", function (async) {
   }));
 }).
 it("Should create id for model if not defined", function (async) {
-    Model('User_no_id', {
+    Model.define('User_no_id', {
     id: String,
     name: String,
     surname: String,
   });
 
-  var user = Model.create({name: "John", surname: "Rambo"});
+  var user = Model('User_no_id').create({name: "John", surname: "Rambo"});
 
   user.save(async(function (err, user_loaded) {
-    console.log("booming");
-    console.dir(user_loaded);
     assert.notEqual( user_loaded.id, undefined);
     user_loaded.name.should().beEqual(user.name);
   }));
@@ -53,10 +52,11 @@ it("Should create id for model if not defined", function (async) {
 }).
 it("Should have a created date", function (async) {
   
-  var user = Model.create('User');
-  user.id = "Jimi";
-  user.name = "Jimi";
-  user.surname = "Hendrix"
+  var user = Model('User').create({
+    id : "Jimi",
+    name : "Jimi",
+    surname : "Hendrix"
+  });
 
   user.save(async(function (err, result) {
     if (err) throw err;
