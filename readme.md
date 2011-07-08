@@ -34,7 +34,8 @@ Currently its purely fun research. I've been reading through [mongoose](https://
     })
 
 ## Logging
-  To see in detail what is happening the logging can be turned on. This can be done by:
+  To see in detail what is happening the logging can be turned on. This can be done by
+  
     require('LazyBoy').logger.setLogLevel(1);
 
   `LazyBoy` uses [Coloured logger](https://github.com/bentruyman/coloured-log) under the covers and uses the same log levels
