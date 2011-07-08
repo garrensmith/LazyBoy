@@ -1,4 +1,5 @@
-var describe = require('Jody').describe,
+var assert = require('assert'),
+    describe = require('Jody').describe,
     cradle = require('cradle'),
     Model = require('../lib/index'),
     db;
@@ -38,6 +39,17 @@ it("Should create id for model if not defined", function (async) {
     name: String,
     surname: String,
   });
+
+  var user = Model.create({name: "John", surname: "Rambo"});
+
+  user.save(async(function (err, user_loaded) {
+    console.log("booming");
+    console.dir(user_loaded);
+    assert.notEqual( user_loaded.id, undefined);
+    user_loaded.name.should().beEqual(user.name);
+  }));
+
+
 }).
 it("Should have a created date", function (async) {
   

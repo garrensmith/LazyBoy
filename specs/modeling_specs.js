@@ -5,8 +5,18 @@ var describe = require('Jody').describe,
 describe('Create Model').
   beforeEach(function (done) {
     Model.remove_models();
+    done();
   }).
-  it("Should create basic model given json", function () {
+  it("should be created with supplied parameters", function() {
+    Model.define('User', {
+      name: String,
+    });
+    var user = Model('User').create({name: "Jimi"});
+
+    user.name.should().beEqual("Jimi");
+
+  }).
+  it("Should create basic model given basic details", function () {
     var user = Model.define('User', {
         id: String,
         name: String,
@@ -19,14 +29,14 @@ describe('Create Model').
       surname: "Smith"
     };
 
-    var created_user = Model.load('User',raw_user);
+    var created_user = Model('User').create(raw_user);
     
     created_user.name.should().beEqual('Garren');
     created_user.surname.should().beEqual('Smith');
 
   }).
   it("Should Supply defaults for unsupplied values", function () {
-    var user = Model('User', {
+    var user = Model.define('User', {
       name: String,
       surname: String,
       age: {type: String, default:"3"}
@@ -37,7 +47,7 @@ describe('Create Model').
       surname: "Smith"
     };
 
-    var created_user = Model.load('User',raw_user);
+    var created_user = Model('User').create(raw_user);
 
     console.dir(created_user);
     Model.dump();
@@ -47,8 +57,24 @@ describe('Create Model').
     created_user.age.should().beEqual('3');
 
   }).
-  it("Should undefined propety if no default defined", function () {
-    var user = Model('User', {
+  it("Should create new model object with supplied values", function() {
+    Model.define('User', {
+      name: String,
+      surname: String,
+      age: String
+    });
+
+    var user = Model('User').create({name:"Kurt",surname: "Cobain", age: 31}); 
+    
+    console.log("user create");
+    console.dir(user);
+    user.name.should().beEqual("Kurt");
+    user.surname.should().beEqual("Cobain");
+    user.age.should().beEqual(31);
+
+  }).
+  it("Should contain undefined propety if no default defined", function () {
+    var user = Model.define('User', {
       name: String,
       surname: String,
       age: String
@@ -59,7 +85,7 @@ describe('Create Model').
       surname: "Smith"
     };
 
-    var created_user = Model.load('User',raw_user);
+    var created_user = Model('User').create(raw_user);
  
     created_user.name.should().beEqual('Garren');
     created_user.surname.should().beEqual('Smith');
