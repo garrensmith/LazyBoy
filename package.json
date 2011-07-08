@@ -13,9 +13,10 @@
     "node": ">0.4.0"
   },
   "dependencies": {
-    "cradle": ">=0.5.5"
+    "cradle": ">=0.5.5",
+    "coloured-log":">=0.9.6"
     },
   "devDependencies": {
-    "Jody": ">0.1.0"
+    "Jody": ">=0.2.1"
     }
 }

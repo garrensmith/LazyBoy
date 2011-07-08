@@ -1,4 +1,8 @@
-var Model = require('../lib/index.js');
+var Model = require('../lib/index.js'),
+    logger = require('../lib/logger');
+
+logger.setLogLevel(7);
+
 
 Model.create_connection('lazyboy_tests');
 
