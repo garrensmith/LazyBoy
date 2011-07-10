@@ -26,10 +26,27 @@ Currently its purely fun research. I've been reading through [mongoose](https://
     })
 
 ## Finding a model
+  ### Finding by Id
     var user_id = "123456";
 
     var User = Model('User');
     User.find(user_id, function (err, user) {
+        // .. do something with the user
+    })
+
+  ### Find all
+  Will return an array of all documents that fit the criteria
+    
+    var User = Model('User');
+    User.all(function (err, users) {
+        // .. do something with the user
+    })
+
+  ### Find by criteria
+  Will return an array of all documents that fit the criteria
+    
+    var User = Model('User');
+    User.where(name,"Ben", function (err, users) {
         // .. do something with the user
     })
 
