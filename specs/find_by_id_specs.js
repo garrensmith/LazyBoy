@@ -8,7 +8,9 @@ var describe = require('Jody').describe,
 describe("Find document by Id").   
     beforeAll(function (done) {
        db = new(cradle.Connection)().database('lazyboy_tests');
-       User = Model.define('User', {name: String });
+        Model.define('User', {name: String });
+        User = Model('User');
+        console.dir(User);
        done();
     }).
     it("Should find saved document by id", function (async) {
@@ -18,7 +20,8 @@ describe("Find document by Id").
        };
        db.save(user_doc.id, user_doc,async( function (err, req) {
            if (err) throw err;
-                 
+          
+           console.dir(User);
            User.find(user_doc.id, async(function (err, user) {
                if (err) throw err;
                user.id.should().beEqual(user_doc.id);
