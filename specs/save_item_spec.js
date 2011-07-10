@@ -50,6 +50,26 @@ it("Should create id for model if not defined", function (async) {
 
 
 }).
+it("Should have a model type", function (async) {
+  var user = Model('User').create({
+    id : "Jimi1",
+    name : "Jimi1",
+    surname : "Hendrix1"
+  });
+
+  user.model_type.should().beEqual("User");
+
+  user.save(async(function (err, result) {
+    if (err) throw err;
+
+    db.get(user.id,async(function (err, loaded_user) {
+      loaded_user.model_type.should().beEqual("User");
+
+    }));
+
+  }));
+
+}).
 it("Should have a created date", function (async) {
   
   var user = Model('User').create({

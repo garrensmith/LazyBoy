@@ -2,10 +2,8 @@ var describe = require('Jody').describe,
     Model = require('../lib/index'),
     db_helper = require('../lib/connection');
 
-//require('../lib/index').logger.setLogLevel(7);
 
-
-describe("Querying data").
+describe("Finding by property").
   beforeAll(function (done) {
     Model.define("User", {name: String, surname: String});
 
@@ -21,15 +19,7 @@ describe("Querying data").
   }).
   it("Should create view that can be queried for first names", function (async) {
     var User = Model("User");
-   /* db = db_helper.connection();    
-    
-    db.view('User/all',{descending:"false"} , async(function (err, doc) {
-      console.log("viewing");
-      console.dir(err);
-      console.dir(doc);
-    }));*/
-
-    User.where("name","Ben",async(function (err, users) {
+      User.where("name","Ben",async(function (err, users) {
       users.length.should().beEqual(1);
       var user = users[0];
       user.name.should().beEqual("Ben");
@@ -56,4 +46,15 @@ describe("Querying data").
       user.surname.should().beEqual("James");
     }));
 
+  }).
+  it("Should find only for specified model", function (async) {
+   var User = Model("User");
+   var Another_User = Model.define('AnotherUser',{name:String});
+  
+   Another_User.create({name:"Joshua"}).save(async(function () {
+    User.where("name","Joshua", async(function (err, users) {
+      users.length.should().beEqual(1);
+      users[0].surname.should().beEqual("James");
+    }));
+   }));
   });
