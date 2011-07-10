@@ -44,6 +44,7 @@ Currently its purely fun research. I've been reading through [mongoose](https://
 #What needs doing?
 
 Plenty:
+* Load models up on startup
 * Should we allow custom ID's?
 * Remove
 * Type casting
