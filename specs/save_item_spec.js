@@ -9,7 +9,7 @@ beforeAll(function (done) {
   db = new(cradle.Connection)().database('lazyboy_tests');
 
   Model.define('User', {
-    id: String,
+  //  id: String,
     name: String,
     surname: String,
   });
@@ -52,15 +52,18 @@ it("Should create id for model if not defined", function (async) {
 }).
 it("Should have a model type", function (async) {
   var user = Model('User').create({
-    id : "Jimi1",
-    name : "Jimi1",
-    surname : "Hendrix1"
+    id : "Jimmy",
+    name : "Jimmy",
+    surname : "Page"
   });
 
   user.model_type.should().beEqual("User");
 
   user.save(async(function (err, result) {
-    if (err) throw err;
+    if (err) {
+      console.dir(err);
+      throw err;      
+    }
 
     db.get(user.id,async(function (err, loaded_user) {
       loaded_user.model_type.should().beEqual("User");

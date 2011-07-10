@@ -11,9 +11,9 @@ describe('Create Model').
     Model.define('User', {
       name: String,
     });
-    var user = Model('User').create({name: "Jimi"});
+    var user = Model('User').create({name: "Barry"});
 
-    user.name.should().beEqual("Jimi");
+    user.name.should().beEqual("Barry");
 
   }).
   it("Should create basic model given basic details", function () {

@@ -44,10 +44,8 @@ Currently its purely fun research. I've been reading through [mongoose](https://
 #What needs doing?
 
 Plenty:
-
+* Should we allow custom ID's?
 * Remove
-* Finding all
-* Decent logging
 * Type casting
 * BeforeSave, BeforeCreate callbacks
 * Validations

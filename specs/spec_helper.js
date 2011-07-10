@@ -6,7 +6,11 @@ require('Jody').configure.beforeAll(function (done) {
       
       //require('../lib/logger').setLogLevel(7);
     
-      db.destroy(function () {  
+      db.destroy(function (err) {  
+        if (err) {
+          console.log("error on delete db");
+          throw err;
+        }
         db.create();
         db_connection.create_connection('lazyboy_tests');
         done();   
