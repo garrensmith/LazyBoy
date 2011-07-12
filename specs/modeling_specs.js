@@ -2,6 +2,33 @@ var describe = require('Jody').describe,
     Model = require('../lib/index'),
     assert = require('assert');
 
+describe("Defining a model").
+  beforeEach(function (done) {
+      Model.remove_models();
+      done();
+  }).
+  it("Should contain specified schema for model after define", function (async) {
+     var User = Model.define('User',{name:String});
+
+     User.schema.name.type.should().beEqual(String);
+  }).
+  it("Should contain specified schema for model after load", function (async) {
+     var User = Model.define('User',{name:String});
+     User = Model('User'); 
+
+     User.schema.name.type.should().beEqual(String);
+  }).
+  it("Should be seperate models", function (async) {
+    var User = Model.define('User',{name:String});
+    var Post = Model.define('Post',{title:String});
+
+    var user = User.create({name:"garren"});
+    var post = Post.create({title:"hello"});
+
+    user.should().notBeEqual(post);
+    User.should().notBeEqual(Post);
+  });
+
 describe('Create Model').
   beforeEach(function (done) {
     Model.remove_models();

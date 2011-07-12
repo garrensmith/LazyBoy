@@ -38,5 +38,23 @@ describe('Save callback').
         console.log("after save");
         assert.notEqual(blog.id,null);
     }));
+  }).
+  it("Should not fire for different model", function (async) {
+    var Blog2 = Model.define('Blog2',{title: String,
+                                    post: String,
+                                    url: String
+                                    });
+  
+    var blog_post = Blog2.create({title: "hello world", post:"My first demo post",url:"boom"});
+  
+    blog_post.save(async(function (err, saved_blog_post) {
+      saved_blog_post.url.should().beEqual("boom");
+    }));
+
+
+
   });
+
+
+
 
