@@ -16,6 +16,7 @@ describe('Save callback').
 
 
     Blog.beforeSave(function (blog ) {
+      console.log("boom before save");
       console.dir(blog);
       blog.url = blog.title.split(' ').join('-');
     });

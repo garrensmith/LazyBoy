@@ -27,6 +27,7 @@ describe("Defining a model").
 
     user.should().notBeEqual(post);
     User.should().notBeEqual(Post);
+    User.schema.should().notBeEqual(Post.schema);
   });
 
 describe('Create Model').
