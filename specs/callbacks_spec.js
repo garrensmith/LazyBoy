@@ -16,15 +16,12 @@ describe('Save callback').
 
 
     Blog.beforeSave(function (blog ) {
-      console.log("boom before save");
-      console.dir(blog);
       blog.url = blog.title.split(' ').join('-');
     });
 
     var blog_post = Blog.create({title: "hello world", post:"My first demo post"});
     
     blog_post.save(async(function (err, saved_blog_post) {
-     console.dir(saved_blog_post);
      saved_blog_post.url.should().beEqual("hello-world");
     }));
 
@@ -36,7 +33,6 @@ describe('Save callback').
     blog_post.save();
 
     Blog.afterSave(async(function (blog) {
-        console.log("after save");
         assert.notEqual(blog.id,null);
     }));
   }).
