@@ -62,13 +62,11 @@ Will return an array of all documents that fit the criteria
 #fixes
   * Test for where on not existing just returns empty array
   * Same for all
-  * Refactor `model_thing` into better name
 
 Plenty:
 * Load models up on startup
 * Should we allow custom ID's?
 * Remove
 * Type casting
-*  BeforeCreate callbacks
 * Validations
 

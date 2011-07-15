@@ -35,11 +35,8 @@ beforeAll(function (done) {
     User.create({name:"Ben", surname:"Harper"}).save(async(function (){
       
       Blog.all(async(function(err, blogs) {
-        console.log("Bloogs");
-        console.dir(blogs);
         blogs.length.should().beEqual(2);
       }));
 
     }));
   });
-

@@ -37,6 +37,20 @@ describe("Finding by property").
     }));
   
   }).
+  it("Should return empty array if query not exist", function (async) {
+    var User = Model("User");
+    
+    User.where("name","Henry", async(function (err, users) {
+      users.length.should().beEqual(0);
+    }));
+  }).
+  it("Should return if view not exist", function (async) {
+    var User = Model("User");
+    
+    User.where("name123","Henry", async(function (err, users) {
+      err.reason.should().beEqual("missing_named_view");
+    }));
+  }).
   it("Should query by surname", function (async) {
     var User = Model("User");
     User.where("surname","James",async(function (err, users) {
@@ -45,7 +59,6 @@ describe("Finding by property").
       user.name.should().beEqual("Joshua");
       user.surname.should().beEqual("James");
     }));
-
   }).
   it("Should find only for specified model", function (async) {
    var User = Model("User");
