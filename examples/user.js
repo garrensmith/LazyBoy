@@ -27,12 +27,7 @@ user.save(function (err, user) {
     console.log("Surname: " + user.surname);
   });
 
-  //User = Model.User; Not implemented yet!
-  /*User.find("garren", function (err, user) {
-    console.log("Name: " + user.name);
-    console.log("Surname: " + user.surname);
-  });*/
-
+  
 });
 
 
