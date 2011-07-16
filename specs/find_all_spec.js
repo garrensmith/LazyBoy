@@ -7,6 +7,8 @@ beforeAll(function (done) {
     Model.define("Blog", {title: String, content: String});
 
     var Blog = Model("Blog");
+    
+    Model.load();
 
     Blog.create({title:"First Blog", content:"This is my first blog post"}).save(function (){
       Blog.create({title:"Second Blog post",content:"This is my second blog post"}).save(function () {
@@ -20,8 +22,6 @@ beforeAll(function (done) {
     var Blog = Model("Blog");
       
     Blog.all(async(function(err, blogs) {
-      console.log("Bloogs");
-      console.dir(blogs);
       blogs.length.should().beEqual(2);
     }));
   }).
@@ -31,6 +31,8 @@ beforeAll(function (done) {
     Model.define("User", {name: String, surname: String});
 
     var User = Model("User");
+
+    Model.load();
 
     User.create({name:"Ben", surname:"Harper"}).save(async(function (){
       

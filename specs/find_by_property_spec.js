@@ -6,6 +6,7 @@ var describe = require('Jody').describe,
 describe("Finding by property").
   beforeAll(function (done) {
     Model.define("User", {name: String, surname: String});
+    Model.load();
 
     var User = Model("User");
 
@@ -63,6 +64,7 @@ describe("Finding by property").
   it("Should find only for specified model", function (async) {
    var User = Model("User");
    var Another_User = Model.define('AnotherUser',{name:String});
+   Model.load();
   
    Another_User.create({name:"Joshua"}).save(async(function () {
     User.where("name","Joshua", async(function (err, users) {

@@ -5,7 +5,7 @@ var describe = require('Jody').describe,
 describe("Removing item").
   beforeAll(function (done) {
     Model.define('Car',{name: String, max_speed: Number});
-
+    Model.load();
     done();
   }).
 it("Should remove document from db", function (async) {

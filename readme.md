@@ -63,8 +63,8 @@ Will return an array of all documents that fit the criteria
 * Revision tests on save
 
 Plenty:
-* Load models up on startup
 * Should we allow custom ID's?
 * Type casting
+* Documentation
 * Validations
 
