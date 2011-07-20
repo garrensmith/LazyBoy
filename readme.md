@@ -61,6 +61,7 @@ Will return an array of all documents that fit the criteria
 #What needs doing?
 ## Fixes
 * Revision tests on save
+* Query mixin not call create but own afterLoad Function
 
 Plenty:
 * Should we allow custom ID's?

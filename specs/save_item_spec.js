@@ -26,8 +26,9 @@ it("Should save item into db", function (async) {
 
   user.save(async(function (err, result) {
     if (err) throw err;
-
+    
     db.get(user.id,async(function (err, loaded_user) {
+      console.dir(loaded_user);
       loaded_user.name.should().beEqual(user.name);
       loaded_user.surname.should().beEqual(user.surname);
     }));

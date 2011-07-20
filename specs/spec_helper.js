@@ -8,12 +8,13 @@ require('Jody').configure.beforeAll(function (done) {
     
       db.destroy(function (err) {  
         if (err) {
-          console.log("error on delete db");
-          console.dir(err);
+          //console.log("error on delete db");
+          //console.dir(err);
         }
-        db.create();
-        db_connection.create_connection('lazyboy_tests');
-        done();   
+        db.create(function () {
+          db_connection.create_connection('lazyboy_tests');
+          done();   
+        });
       });
 });
 
