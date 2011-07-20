@@ -19,6 +19,8 @@ describe("Embedding documents").
                                          address: {hasone: Address}
                                       });
 
+    Model.load();
+
     
     done();
   }).
@@ -35,8 +37,9 @@ describe("Embedding documents").
     
     new_person.save(async(function (err, saved_person) {
       db.get(saved_person.id, async(function (err, person_doc) {
-        Address.where("number",24, async(function (err, address) {
-          
+        Address.where("street_name","Cool Str", async(function (err, addresses) {
+          var address = addresses[0];
+          console.dir(address);
           person_doc.address_id.should().beEqual(address.id);
         
         }));
