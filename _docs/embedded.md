@@ -1,4 +1,0 @@
-Embedding Models
-================
-
-## Coming Soon

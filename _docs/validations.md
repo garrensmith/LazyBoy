@@ -1,4 +1,0 @@
-Validations
-===========
-
-## Coming soon

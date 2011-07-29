@@ -1,3 +1,8 @@
+---
+layout: default
+title: Define Model
+---
+
 Defining a model
 ================
 
@@ -66,14 +71,13 @@ To query the view:
 		
 ## Accessing a model
 
-A model can be access by getting it from 'Lazyboy.Model` 
-
-	var Model = require('lazyboy');
-	
-	var User = Model('User');
-	User.find("12345", function (err, user) {
-		// do something
-	});
+A model can be access by getting it from `Lazyboy.Model` 
+	  
+    var Model = require('lazyboy');
+	  var User = Model('User');
+	    User.find("12345", function (err, user) {
+		  // do something
+	  });
 	
 
 	

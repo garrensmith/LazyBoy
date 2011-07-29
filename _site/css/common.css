@@ -1,0 +1,17 @@
+#header {
+  margin-bottom: 40px;
+}
+
+
+
+#header-links {
+  text-decoration: none;
+  list-style-type: none;
+  display: block;
+}
+
+#header-links li {
+  position: relative;
+display: inline;
+}
+

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 <head>
    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-   <title>{{ page.title }}</title>
+   <title>Create,Save and Remove</title>
    <meta name="author" content="Garren Smith" />
    <link href="" rel="alternate" title="lazyboy" type="application/atom+xml" />
 
@@ -50,7 +50,30 @@
   </ul>
 </div>
 
-  {{ content }}
+  <h1 id='create'>Create</h1>
+
+<p>Create a model document as follows:</p>
+
+<pre><code>	var User = Model(&#39;User&#39;);
+	var my_user = User.create({name: &quot;Jimi&quot;, surname: &quot;Hendrix&quot;});</code></pre>
+
+<p>This creates an instance but does not save it to the database.</p>
+
+<h1 id='save'>Save</h1>
+
+<p>To save a model to the database. myuser.save(function (err, saved_user) { // do something with the model });</p>
+
+<p>If the model has been saved before it will do the update, if the model has not been saved before it will save it and then return the model in the callback with an id property and revision. It will also have two date stamps, the first datestamp is <code>DateCreated</code> which is the date the model was first saved and the <code>DateUpdated</code> which is the timestamp for when the model was updated</p>
+
+<h1 id='remove'>Remove</h1>
+
+<p>Remove a model from the database as follows:</p>
+
+<pre><code>	myuser.remove(function (err) {
+		// model removed
+	});</code></pre>
+
+<p>This will remove the model from the database, not getting it back after this!</p>
   
  </div>
 
