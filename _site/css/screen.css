@@ -211,12 +211,21 @@ ul.posts {
 #header-links li {
   position: relative;
 display: inline;
+margin-right: 10px;
+font-size: 1em;
 }
 
 #header-name {
 font-family: 'Federo', cursive;
 font-size: 52pt;
+
 }
+
+#header-name a {
+text-decoration:none;
+color:inherit;
+}
+
 
 
 
