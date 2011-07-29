@@ -47,17 +47,65 @@
   </ul>
 </div>
 
-  <div id="home">
-  <h1>Introduction</h1>
-  <p>LazyBoy is a Couchdb Object Document Model. It has full support for relations, type casting, custom views and querying.</p>
+  <h1 id='introduction'>Introduction</h1>
 
-  <h2>Quick Introduction</h2>
+<p>LazyBoy is a Couchdb Object Document Model. It has full support for relations, type casting, custom views and querying.</p>
 
-  Quick introduction.... to come
+<h1 id='cheat_sheet'>Cheat Sheet</h1>
 
-</div>
+<h2 id='defining_a_model'>Defining a model</h2>
 
+<pre><code>var Model = require(&#39;LazyBoy&#39;);
 
+Model.define(&#39;User&#39;, {
+  name: String
+  surname: {type: String, default: &quot;Rambo&quot;}
+})</code></pre>
+
+<h2 id='creating_and_saving_a_model'>Creating and saving a model</h2>
+
+<pre><code>var user = Model.create(&#39;User&#39;, {name: &quot;John&quot;, surname: &quot;Rambo&quot;});
+
+user.save(function (err, saved_user) {
+    // .. do some other stuff here
+})</code></pre>
+
+<h2 id='finding_a_model'>Finding a model</h2>
+
+<h3 id='finding_by_id'>Finding by Id</h3>
+
+<pre><code>var user_id = &quot;123456&quot;;
+
+var User = Model(&#39;User&#39;);
+User.find(user_id, function (err, user) {
+    // .. do something with the user
+})</code></pre>
+
+<h3 id='find_all'>Find all</h3>
+
+<p>Will return an array of all documents that fit the criteria</p>
+
+<pre><code>var User = Model(&#39;User&#39;);
+User.all(function (err, users) {
+    // .. do something with the user
+})</code></pre>
+
+<h3 id='find_by_criteria'>Find by criteria</h3>
+
+<p>Will return an array of all documents that fit the criteria</p>
+
+<pre><code>var User = Model(&#39;User&#39;);
+User.where(name,&quot;Ben&quot;, function (err, users) {
+    // .. do something with the user
+})</code></pre>
+
+<h2 id='logging'>Logging</h2>
+
+<p>To see in detail what is happening the logging can be turned on. This can be done by</p>
+
+<pre><code>require(&#39;LazyBoy&#39;).logger.setLogLevel(1);</code></pre>
+
+<p><code>LazyBoy</code> uses <a href='https://github.com/bentruyman/coloured-log'>Coloured logger</a> under the covers and uses the same log levels</p>
   
  </div>
 
