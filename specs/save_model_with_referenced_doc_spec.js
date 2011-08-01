@@ -3,7 +3,7 @@ var cradle = require('cradle'),
     Model = require('../lib/index.js'),
     db;
 
-
+/*
 describe("Embedding documents").
   beforeAll(function (done) {
     db = new(cradle.Connection)().database('lazyboy_tests');
@@ -71,4 +71,6 @@ describe("Embedding documents").
 
       }));                        
     });
+
+    */
 
