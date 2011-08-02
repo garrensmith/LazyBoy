@@ -10,7 +10,7 @@
    <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
 
    <!-- Homepage CSS -->
-   <link rel="stylesheet" href="css/screen.css" type="text/css" media="screen, projection" />
+   <link rel="stylesheet" href="/css/screen.css" type="text/css" media="screen, projection" />
    <link href='http://fonts.googleapis.com/css?family=Federo' rel='stylesheet' type='text/css'>
   
    <!-- Typekit -->
@@ -49,11 +49,37 @@
 
   <h1 id='installation'>Installation</h1>
 
-<p>Installation of La</p>
+<p>Installation of LazyBoy is done via npm</p>
+
+<pre><code>  npm install LazyBoy</code></pre>
+
+<p>This will install it into your projects <code>./node_modules</code> directory</p>
 
 <h1 id='connect_to_database'>Connect to database</h1>
 
+<p>The connection to the database must be setup before anything else will work.</p>
+
+<p>There are two options to define the connection to the database. The fist just supplies the name of the database. This is designed for quick simple connection to a local database and will have the defaults for everything else. Model.create_connection(&#8220;my_database&#8221;);</p>
+
+<p>When more options are required, an options object can be give to the <code>create_connection</code> method.</p>
+
+<pre><code>   Model.create_connection({
+    url: &#39;database_url&#39;,
+    port: &#39;443&#39;,
+    db:&#39;database_name&#39;,
+    auth: { // not required
+      username: &#39;username&#39;,
+      password: &#39;awesome_unique_password&#39;
+    },
+    secure:true,
+});</code></pre>
+
+<p>If any options are not supplied they will be set to the default value</p>
+
 <h1 id='loading_models'>Loading Models</h1>
+
+<p>The models need to be loaded for LazyBoy to work. This can be done via two ways. The first is to manually require the files where the models are defined and then call <code>Model.load()</code> or keep all the models in a specific folder and point LazyBoy to that folder <code>Model.load(&#39;./models&#39;)</code></p>
+<br /><br />
   
  </div>
 

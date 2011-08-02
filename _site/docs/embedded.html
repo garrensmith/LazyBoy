@@ -10,7 +10,7 @@
    <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
 
    <!-- Homepage CSS -->
-   <link rel="stylesheet" href="css/screen.css" type="text/css" media="screen, projection" />
+   <link rel="stylesheet" href="/css/screen.css" type="text/css" media="screen, projection" />
    <link href='http://fonts.googleapis.com/css?family=Federo' rel='stylesheet' type='text/css'>
   
    <!-- Typekit -->
@@ -49,7 +49,36 @@
 
   <h1 id='embedding_models'>Embedding Models</h1>
 
-<h2 id='coming_soon'>Coming Soon</h2>
+<p>LazyBoy supports basic document relations by embedding other models in the main object.</p>
+
+<h2 id='one_to_one'>One to one</h2>
+
+<p>To define a model which has another model embedded in it, define as follows</p>
+
+<pre><code>  Owner = Model.define(&quot;Owner&quot;, {
+    name: String
+  });
+  
+  AddressBook = Model.define(&quot;AddressBook&quot;, {
+    name: String,
+    owner: {has_one: Owner}
+  });</code></pre>
+
+<p>This will store the <code>Owner</code> modeil inside the address book. However the Owner model will not have a unique id and can only be queried by finding the specific address book that it belongs to.</p>
+
+<h2 id='one_to_many'>One to many</h2>
+
+<p>LazyBoy can also embed multiple documents in one model, these documents are stored as an array.</p>
+
+<pre><code>  Comment = Model.define(&quot;Comment&quot;, {
+    name: String,
+    text: String
+  });
+  
+  BlogPost = Model.define(&quot;BlogPost&quot;, {
+    title: String,
+    comments: {has_many: Comment}
+  });</code></pre>
   
  </div>
 

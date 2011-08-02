@@ -10,7 +10,7 @@
    <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
 
    <!-- Homepage CSS -->
-   <link rel="stylesheet" href="css/screen.css" type="text/css" media="screen, projection" />
+   <link rel="stylesheet" href="/css/screen.css" type="text/css" media="screen, projection" />
    <link href='http://fonts.googleapis.com/css?family=Federo' rel='stylesheet' type='text/css'>
   
    <!-- Typekit -->
@@ -49,11 +49,52 @@
 
   <h1 id='querying'>Querying</h1>
 
+<p>LazyBoy supports multiple ways of finding a specified document or documents for model.</p>
+
+<h2 id='find_all'>Find All</h2>
+
+<p>Find All will return all documents for a specified model. It will return an array with all the documents contained inside.</p>
+
+<pre><code>  User.all(function (err, users) {
+    // all users
+  });</code></pre>
+
 <h2 id='find_by_id'>Find by Id</h2>
+
+<p>Finding by the Id will return only one document with the specified document or null if no documents match that Id.</p>
+
+<pre><code>  Blog.find(&quot;12345&quot;, function (err, blog_post) {
+    // do something with the blog post
+  });</code></pre>
 
 <h2 id='find_by_property'>Find by property</h2>
 
+<p>LazyBoy creates some generic views to be used with each model. These can be accessed via the <code>.where</code> property on each model. It takes two arguments the propery to search by and the value of the propery to group by. This method always returns an array of the results.</p>
+
+<pre><code>  Album.where(&quot;band&quot;,&quot;coldplay&quot;, function (err, albums) {
+    albums.forEach(....
+  });</code></pre>
+
 <h2 id='custom_views'>Custom views</h2>
+
+<p>It is also possible to create custom views for a specific require of a model. This is done when defining a model.</p>
+
+<pre><code>  var Album = Model.define(&quot;Album&quot;,{band: String, title: String, rating: Number});
+
+  Album.addView(&#39;BestIncubusAlbums&#39;,{ 
+    map: function (doc) {
+      if (doc.model_type === &#39;Album&#39; &amp;&amp; doc.band === &#39;Incubus&#39; &amp;&amp; doc.rating === 5) {
+        emit(null,doc);
+      }
+    }
+  });</code></pre>
+
+<p>Then to query that view</p>
+
+<pre><code>  Album.view(&#39;BestIncubusAlbums&#39;, function (err, albums) {
+
+  
+  });</code></pre>
   
  </div>
 
