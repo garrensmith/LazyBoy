@@ -1,9 +1,9 @@
 {
   "author": "Garren Smith <garren.smith@gmail.com> (www.garrensmith.com)",
   "name": "LazyBoy",
-  "description": "A lazy object mapper for couchdb",
-  "version": "0.0.1",
-  "homepage": "http://github.com/garrensmith/lazyboy",
+  "description": "A object document mapper for couchdb",
+  "version": "0.1.0",
+  "homepage": "http://garrensmith.com/LazyBoy",
   "repository": {
     "type": "git",
     "url": "git://github.com/garrensmith/lazyboy.git"
