@@ -25,6 +25,6 @@ describe("Custom views").
           Album.view('BestIncubusAlbums', async( function (err, albums) {
           albums.length.should().beEqual(3);
         }));
-        }));
+    }));
         
   });

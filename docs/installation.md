@@ -14,6 +14,26 @@ Installation of LazyBoy is done via npm
 Connect to database
 ===================
 
+The connection to the database must be setup before anything else will work.
+
+There are two options to define the connection to the database. The fist just supplies the name of the database. This is designed for quick simple connection to a local database and will have the defaults for everything else.
+      Model.create_connection("my_database");
+
+When more options are required, an options object can be give to the `create_connection` method.
+
+       Model.create_connection({
+        url: 'database_url',
+        port: '443',
+        db:'database_name',
+        auth: { // not required
+          username: 'username',
+          password: 'awesome_unique_password'
+        },
+        secure:true,
+    });
+
+If any options are not supplied they will be set to the default value
+
 
 Loading Models
 ==============
