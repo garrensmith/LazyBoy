@@ -4,7 +4,7 @@ var describe = require('Jody').describe,
     Model = require('../lib/index'),
     db, Owner, AddressBook;
 
-describe("Simple Embedding of Docs").
+describe("Simple Embedding of Single Doc").
   beforeAll(function (done) {
     db = new(cradle.Connection)().database('lazyboy_tests');
 
