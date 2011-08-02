@@ -9,6 +9,8 @@ Currently its purely fun research. I've been reading through [mongoose](https://
 
 #How do I use this thing?
 
+Below is a quick cheatsheet but the docs can be found [http://garrensmith.com/LazyBoy](http://garrensmith.com/LazyBoy)
+
 ## Defining a model
     var Model = require('LazyBoy');
 
