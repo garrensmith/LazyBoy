@@ -6,23 +6,24 @@ logger.setLogLevel(7);
 
 Model.create_connection('lazyboy_tests');
 
-var Author = Model.define('Author', {name: String,
+var Author = Model.define('Author', {
+                                      name: String,
                                       email: String
                             });
 
-var Comment = Model.define('Comment',{user: String,
+var Comment = Model.define('Comment',{
+                                      user: String,
                                       msg: String
                                       }); 
 
-var Post = Model.define('Post',{title: String,
-                                text: String,
-                                date: Date,
-                                comments: {hasmany: Comment ,
-                                author: {hasone: Author }
-                                });
+var Post = Model.define('Post',{
+                              title: String,
+                              text: String,
+                              date: Date,
+                              comments: {has_many: Comment ,
+                              author: {has_one: Author }
+                              });
 
-// to understand it -- Storing inside document
-//                    
                         
           
 

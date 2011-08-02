@@ -56,4 +56,18 @@ describe("Simple Embedding of Single Doc").
    
   
 
+  }).
+  it("Should save doc with null if no embedded doc and load with empty object", function (async) {
+    var address_book = AddressBook.create({name: "Address Book with no owner"});
+
+    address_book.save(async(function (err, res) {
+      
+      AddressBook.find(res.id,async(function (err, loaded) {
+        console.dir(loaded.owner);
+        loaded.owner.model_type.should().beEqual('Owner');
+        assert.equal(loaded.owner.name, null);
+      }));
+    
+    }));
+
   });

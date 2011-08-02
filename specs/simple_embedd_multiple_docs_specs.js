@@ -24,8 +24,7 @@ describe("Saving multiple embedded docs").
   }).
   it("Should save all embedded docs in doc as array", function (async) {
     var blog_post = BlogPost.create({title: "Cool blog Post", comments: []});
-
-      
+   
     blog_post.comments.push(Comment.create({name:"Garren", text: "Nicely done"}));
     blog_post.comments.push(Comment.create({name:"Billy", text: "What the hell? this doesn't make sense"}));
     
@@ -37,7 +36,6 @@ describe("Saving multiple embedded docs").
   }).
   it("Should serialise each each embedded doc", function (async) {
     var blog_post = BlogPost.create({title: "Another blog Post", comments: []});
-
       
     blog_post.comments.push(Comment.create({name:"Kirsty", text: "Wow"}));
     blog_post.comments.push(Comment.create({name:"James", text: "Here is a random comment"}));
@@ -50,24 +48,28 @@ describe("Saving multiple embedded docs").
   }).
   it("Should load embedded docs", function (async) {
     var blog_post = BlogPost.create({title: "A third blog Post", comments: []});
-
       
     blog_post.comments.push(Comment.create({name:"Henry", text: "Cool"}));
     blog_post.comments.push(Comment.create({name:"Wallace", text: "Awesome"}));
     
     blog_post.save(async(function (err, res) {
       BlogPost.find(res.id, async(function (err, loaded) {
-        //console.log("loaded");
-        //console.dir(loaded);
         loaded.comments.length.should().beEqual(2);
         assert.notEqual(loaded.comments[0].schema, null);
-
       }));
-
     }));
-
-
+  }).
+  it("Should save embedded doc as empty array if not supplied", function (async) {
+    var blog_post = BlogPost.create({title: "A third blog Post"});
+   
+    blog_post.save(async(function (err, res) {
+      BlogPost.find(res.id, async(function (err, loaded) {
+        loaded.comments.length.should().beEqual(0);
+      }));
+    }));
   });
+
+
 
 
 
