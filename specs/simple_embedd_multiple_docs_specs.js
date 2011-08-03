@@ -54,6 +54,7 @@ describe("Saving multiple embedded docs").
     
     blog_post.save(async(function (err, res) {
       BlogPost.find(res.id, async(function (err, loaded) {
+        console.dir(loaded);
         loaded.comments.length.should().beEqual(2);
         assert.notEqual(loaded.comments[0].schema, null);
       }));
