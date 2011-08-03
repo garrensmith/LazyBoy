@@ -38,4 +38,28 @@ describe("Before Create Callback").
 
     piano.name.should().beEqual("Yamaha");
  
+  }).
+  it("Should only be called once when object created", function (async) {
+    var call_count = 0;
+    var Guitar =  Model('Guitar');
+    
+    Guitar.beforeCreate(function (guitar) {
+      //guitar.name = "Gibson Custom";
+      call_count += 1;
+    });
+
+    var fender = Guitar.create({name: "Fender Stratocaster", rating: 5, year: new Date(1990,04,05)});
+
+    call_count.should().beEqual(1);
+
+    fender.save(async(function (err, res) {
+      call_count.should().beEqual(1);
+
+      Guitar.find(res.id, async(function (err, loaded_fender) {
+        call_count.should().beEqual(1);
+      }));
+    }));
+
+
+
   });
