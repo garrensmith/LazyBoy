@@ -61,12 +61,7 @@ Will return an array of all documents that fit the criteria
     
 
 #What needs doing?
-## Fixes
-* Tests for embedded docs and no value supplied
-* Revision tests on save
-* Query mixin not call create but own afterLoad Function
-
-Plenty:
+## Plenty:
 * Should we allow custom ID's?
 * Type casting
 * Validations
