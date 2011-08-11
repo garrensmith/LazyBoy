@@ -61,8 +61,8 @@ Will return an array of all documents that fit the criteria
     
 
 #What needs doing?
-## Plenty:
+
 * Should we allow custom ID's?
-* Type casting
+* Better Type casting
 * Validations
 
