@@ -16,6 +16,7 @@ Save
 ====
 
 To save a model to the database.
+
 		myuser.save(function (err, saved_user) {
 			// do something with the model
 		});
