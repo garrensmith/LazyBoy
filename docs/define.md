@@ -11,7 +11,7 @@ Before being able to use a document model in your project you need to define it.
 	var User =	Model.define('User', {
 			name: String,
 			surname: String,
-			date_of_birth : DateTime,
+			date_of_birth : Date,
 			age: {type: Number, default: 21}
 		});
 
@@ -25,6 +25,16 @@ Each property defined on a model must be given a type and can optionally be give
 The `age` property above shows how to define a default value. If an object is created and no value is supplied for age the default value for will be applied.
 This is the same for if an object is loaded from the database and it does not have a value the default value is also applied. If no default value is given the 
 propery will be set to `null`
+
+## Accessing a model
+
+A model can be access by getting it from `Lazyboy.Model` 
+	  
+    var Model = require('lazyboy');
+	  var User = Model('User');
+	    User.find("12345", function (err, user) {
+		  // do something
+	  });
 
 ## Model Callbacks
 
@@ -47,7 +57,7 @@ A couple callbacks are avaible and can be defined on a model.
 
 ## Custom Views
 
-Lazyboy created set of basic views for each model. However often more complex views will be required. This can be defined as follows.
+Lazyboy creats a set of basic views for each model. However often more complex views will be required. This can be defined as follows.
 		
 		var Album = Model.define("Album",{
 			band: String, 
@@ -69,15 +79,6 @@ To query the view:
 			// do something with the albums
 		});
 		
-## Accessing a model
-
-A model can be access by getting it from `Lazyboy.Model` 
-	  
-    var Model = require('lazyboy');
-	  var User = Model('User');
-	    User.find("12345", function (err, user) {
-		  // do something
-	  });
 	
 
 	

@@ -25,7 +25,7 @@ LazyBoy is a Couchdb Object Document Model. It has full support for relations, t
         // .. do some other stuff here
     })
 
-## Finding a model
+# Finding a model
 ### Finding by Id
     var user_id = "123456";
 
