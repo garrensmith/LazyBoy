@@ -68,5 +68,5 @@ Will return an array of all documents that fit the criteria
 
 #Changelog
 
-17 Aug 2011 - Add support for custom methods
+17 Aug 2011 - Add support for custom methods 
 
