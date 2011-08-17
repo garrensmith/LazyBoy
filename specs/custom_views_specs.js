@@ -1,8 +1,9 @@
 var describe = require('jody').describe,
     Model = require('../lib/index');
 
-describe("Custom views").
-  it("Should be able to define custom view for model", function (async) {
+describe("Custom views", function (spec) {
+
+  spec.beforeAll(function (done) {
     var Album = Model.define("Album",{band: String, title: String, rating: Number});
 
     Album.addView('BestIncubusAlbums',{ 
@@ -14,17 +15,27 @@ describe("Custom views").
     });
 
     Model.load();
-    
+
     Album.create({band: "Incubus", rating: 5, title: "Fungus Amongus"}).save();
     Album.create({band: "Incubus", rating: 3, title: "S.C.I.E.N.C.E."}).save(); 
     Album.create({band: "Incubus", rating: 3, title: "Make Yourself"}).save();
     Album.create({band: "Incubus", rating: 5, title: "Morning View"}).save();
     Album.create({band: "Incubus", rating: 2, title: "A Crow Left of the Murder..."}).save(); 
     Album.create({band: "Incubus", rating: 3, title: "Light Grenades"}).save();
-    Album.create({band: "Incubus", rating: 5, title: "If Not Now, When?"}).save(async (function () {
-          Album.view('BestIncubusAlbums', async( function (err, albums) {
-          albums.length.should().beEqual(3);
-        }));
-    }));
-        
+    Album.create({band: "Incubus", rating: 5, title: "If Not Now, When?"}).save(function () {
+
+      done();
+
+    });
+
   });
+
+  spec.it("Should be able to define custom view for model", function (async) {
+    var Album = Model('Album');
+    Album.view('BestIncubusAlbums', async( function (err, albums) {
+      albums.length.should().beEqual(3);
+    }));
+
+  });
+
+});

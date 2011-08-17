@@ -66,3 +66,7 @@ Will return an array of all documents that fit the criteria
 * Better Type casting
 * Validations
 
+#Changelog
+
+17 Aug 2011 - Add support for custom methods
+
