@@ -55,6 +55,33 @@ A couple callbacks are avaible and can be defined on a model.
 		afterSave
 		beforeCreate
 
+## Custom Methods
+
+Specific methods can be defined on model instance. These methods are specific to each model. 
+
+
+      var Vehicle = Model.define('Vehicle', {
+            name: String,
+            gear: {type: Number, default: 1}
+          });
+
+
+      Vehicle.addMethod('sound', function () {
+            return "Rooooooooom";
+      });
+
+      Vehicle.addMethod('change_gear', function (gear) {
+            var old_gear = this.gear;
+            this.gear = gear;
+
+            return "changing from " + old_gear + " to " + gear;
+      });
+
+      var ford = Vehicle.create({name: "Ford Fiesta"});
+      
+      ford.sound(); 
+      ford.change_gear(3);
+
 ## Custom Views
 
 Lazyboy creats a set of basic views for each model. However often more complex views will be required. This can be defined as follows.
