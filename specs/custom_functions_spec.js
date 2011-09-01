@@ -63,18 +63,3 @@ describe("Model can have custom functions", function (spec) {
 
 
 });
-
-
-
-/*
-UK Visa Application Centre Johannesburg
-8th Floor
-Twin Tower East
-Sandton City
-Johannesburg
-South Africa
-2196
-Telephone: 0861-837-221
- *
- *
- */ 
