@@ -68,5 +68,10 @@ Will return an array of all documents that fit the criteria
 
 #Changelog
 
+11 Sep 2011 - Add Before And After Remove Callbacks (Donnie Hedin)
 17 Aug 2011 - Add support for custom methods 
+
+#Contributors
+* Donnie Hedin (sofa420)
+* 8bitDesigner
 
