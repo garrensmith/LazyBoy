@@ -67,7 +67,7 @@ Will return an array of all documents that fit the criteria
 * Validations
 
 #Changelog
-
+13 Sep 2011 - Add Id to serialised model
 11 Sep 2011 - Add Before And After Remove Callbacks (Donnie Hedin)
 17 Aug 2011 - Add support for custom methods 
 
