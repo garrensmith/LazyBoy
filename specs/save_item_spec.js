@@ -87,8 +87,6 @@ it("Should have a created date", function (async) {
     db.get(user.id,async(function (err, loaded_user) {
       var dateCreated = new Date(loaded_user.dateCreated);
       var current_time = new Date();
-      console.log("boom");
-      console.dir(loaded_user);
       dateCreated.getMinutes().should().beEqual(current_time.getMinutes());
       dateCreated.getHours().should().beEqual(current_time.getHours());
     }));

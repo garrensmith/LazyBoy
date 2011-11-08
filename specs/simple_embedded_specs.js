@@ -63,7 +63,6 @@ describe("Simple Embedding of Single Doc").
     address_book.save(async(function (err, res) {
       
       AddressBook.find(res.id,async(function (err, loaded) {
-        console.dir(loaded.owner);
         loaded.owner.model_type.should().beEqual('Owner');
         assert.equal(loaded.owner.name, null);
       }));
