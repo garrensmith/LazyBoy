@@ -2,6 +2,7 @@
   "author": "Garren Smith <garren.smith@gmail.com> (www.garrensmith.com)",
   "name": "LazyBoy",
   "description": "A object document mapper for couchdb",
+  "keywords": ["Couchdb", "db", "ORM", "ODM", "couch"],
   "version": "0.1.5",
   "homepage": "http://garrensmith.com/LazyBoy",
   "repository": {
@@ -15,8 +16,8 @@
   "dependencies": {
     "cradle": ">=0.5.5",
     "coloured-log":">=0.9.6",
-    "async":">=0.1.9"
-
+    "async":">=0.1.9",
+    "validator": ">=0.3.4"
     },
   "devDependencies": {
     "Jody": ">=0.2.1"

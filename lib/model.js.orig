@@ -186,9 +186,13 @@ Model.create_views = function (model_type, model_schema) {
   return model_views
 };
 
+<<<<<<< HEAD
 
 Model.load = function () {
   var cb  = function () {};
+
+  if (arguments.length > 0) {
+
     if (typeof(arguments[0]) === 'string') {
       var dir = path.resolve(process.cwd(),arguments[0]);
       fs.readdirSync(dir).forEach(function (file) {
@@ -199,6 +203,8 @@ Model.load = function () {
     }
 
     var _cb = arguments[arguments.length - 1];
+=======
+>>>>>>> some weird issues with tester
 
     if (typeof(_cb) === 'function') {
       cb = _cb;

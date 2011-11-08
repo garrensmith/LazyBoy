@@ -26,6 +26,7 @@ it("Should save item into db", function (async) {
     surname : "Vedder"
   });
 
+  
   user.save(async(function (err, result) {
     if (err) throw err;
     
