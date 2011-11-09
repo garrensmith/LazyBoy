@@ -3,6 +3,9 @@ var describe = require('Jody').describe,
     assert = require('assert');
 
 describe("Defining a model").
+  beforeAll(function (done) {
+    done();
+  }).
   beforeEach(function (done) {
       Model.remove_models();
       done();
@@ -25,7 +28,7 @@ describe("Defining a model").
     var user = User.create({name:"garren"});
     var post = Post.create({title:"hello"});
 
-    user.should().notBeEqual(post);
+    user.should().BeEqual(post);
     User.should().notBeEqual(Post);
     User.schema.should().notBeEqual(Post.schema);
   });

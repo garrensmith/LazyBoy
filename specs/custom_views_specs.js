@@ -14,26 +14,36 @@ describe("Custom views", function (spec) {
       }
     });
 
-    Model.load();
+    Model.load(function () {
+     // done();
+    });
+    done();
+  });
 
+  spec.beforeEach(function (done) {
+    var Album = Model('Album');
     Album.create({band: "Incubus", rating: 5, title: "Fungus Amongus"}).save();
-    Album.create({band: "Incubus", rating: 3, title: "S.C.I.E.N.C.E."}).save(); 
-    Album.create({band: "Incubus", rating: 3, title: "Make Yourself"}).save();
-    Album.create({band: "Incubus", rating: 5, title: "Morning View"}).save();
-    Album.create({band: "Incubus", rating: 2, title: "A Crow Left of the Murder..."}).save(); 
-    Album.create({band: "Incubus", rating: 3, title: "Light Grenades"}).save();
-    Album.create({band: "Incubus", rating: 5, title: "If Not Now, When?"}).save(function () {
-      done();
+      Album.create({band: "Incubus", rating: 3, title: "S.C.I.E.N.C.E."}).save(); 
+      Album.create({band: "Incubus", rating: 3, title: "Make Yourself"}).save();
+      Album.create({band: "Incubus", rating: 5, title: "Morning View"}).save();
+      Album.create({band: "Incubus", rating: 2, title: "A Crow Left of the Murder..."}).save(); 
+      Album.create({band: "Incubus", rating: 3, title: "Light Grenades"}).save();
+      Album.create({band: "Incubus", rating: 5, title: "If Not Now, When?"}).save(function () {
+        //done();
 
+      });
+
+      done();
     });
 
-  });
+  
+
 
   spec.it("Should be able to define custom view for model", function (async) {
     console.log("hello me");
     var Album = Model('Album');
     Album.view('BestIncubusAlbums', async( function (err, albums) {
-      albums.length.should().beEqual(4);
+      albums.length.should().beEqual(40);
     }));
 
   });

@@ -15,6 +15,8 @@ beforeAll(function (done) {
   });
 
   done();
+
+  Model.load();
 }).
 it("Should save item into db", function (async) {
   
