@@ -4,9 +4,9 @@ var describe = require('Jody').describe,
 
 describe("Getting all models").
 beforeAll(function (done) {
-    Model.define("Blog", {title: String, content: String});
+    Model.define("Blog1", {title: String, content: String});
 
-    var Blog = Model("Blog");
+    var Blog = Model("Blog1");
     
     Model.load();
 
@@ -19,14 +19,14 @@ beforeAll(function (done) {
 
   }).
   it("Should return all documents for Model", function (async) {
-    var Blog = Model("Blog");
+    var Blog = Model("Blog1");
       
     Blog.all(async(function(err, blogs) {
       blogs.length.should().beEqual(2);
     }));
   }).
   it("Should only find documents related to model", function (async) {
-    var Blog = Model("Blog");
+    var Blog = Model("Blog1");
 
     Model.define("User", {name: String, surname: String});
 

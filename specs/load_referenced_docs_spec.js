@@ -1,6 +1,5 @@
 var describe = require('Jody').describe,
-    cradle = require('cradle'),
-    Model = require('../lib/index'),
+    cradle = require('cradle'), Model = require('../lib/index'),
     db;
 
 describe("Loading model with referenced models").
@@ -31,7 +30,6 @@ it("Should load embedded document", function (async) {
   Book.where("title", "Chasm City", async(function (err, books) {
     var book = books[0];
     console.dir(book);
-    book.author.id.should().notBeEqual(null);
     book.author.name.should().beEqual("Alastair");
     book.author.surname.should().beEqual("Reynolds");
 

@@ -28,7 +28,7 @@ describe("Defining a model").
     var user = User.create({name:"garren"});
     var post = Post.create({title:"hello"});
 
-    user.should().BeEqual(post);
+    user.should().notBeEqual(post);
     User.should().notBeEqual(Post);
     User.schema.should().notBeEqual(Post.schema);
   });

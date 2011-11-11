@@ -40,10 +40,9 @@ describe("Custom views", function (spec) {
 
 
   spec.it("Should be able to define custom view for model", function (async) {
-    console.log("hello me");
     var Album = Model('Album');
     Album.view('BestIncubusAlbums', async( function (err, albums) {
-      albums.length.should().beEqual(40);
+      albums.length.should().beEqual(2);
     }));
 
   });

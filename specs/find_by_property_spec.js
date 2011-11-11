@@ -10,7 +10,7 @@ describe("Finding by property").
 
     var User = Model("User");
 
-    User.create({name:"Ben", surname:"Harper"}).save(function (){
+    User.create({name:"Benjamin", surname:"Harper"}).save(function (){
       User.create({name:"Joshua",surname:"James"}).save(function () {
         done();
       });
@@ -20,10 +20,10 @@ describe("Finding by property").
   }).
   it("Should create view that can be queried for first names", function (async) {
     var User = Model("User");
-      User.where("name","Ben",async(function (err, users) {
+      User.where("name","Benjamin",async(function (err, users) {
       users.length.should().beEqual(1);
       var user = users[0];
-      user.name.should().beEqual("Ben");
+      user.name.should().beEqual("Benjamin");
       user.surname.should().beEqual("Harper");
     }));
   

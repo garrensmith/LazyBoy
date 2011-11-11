@@ -8,7 +8,7 @@ require('Jody').configure.beforeAll(function (done) {
     
       db.destroy(function (err) {  
         if (err) {
-          //console.log("error on delete db");
+          console.log("error on delete db");
           //console.dir(err);
         }
         db.create(function () {
