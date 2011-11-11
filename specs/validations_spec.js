@@ -2,7 +2,7 @@ var assert = require('assert'),
     describe = require('Jody').describe,
     Model = require('../lib/index');
 
-/*
+
 describe("Model Validations", function (spec) {
 
   spec.beforeAll(function (done) {
@@ -17,8 +17,8 @@ describe("Model Validations", function (spec) {
     });
 
     
-    Model.load();
-    done();
+    Model.load(function () {});
+      done();
   });
 
   spec.it("Should send error to callback length of email property to small", function (async) {
@@ -33,7 +33,7 @@ describe("Model Validations", function (spec) {
 
     mail1.save(function (err, saved) {
       
-      err.should().beEqual("Error: Invalid email");
+      err[0].should().beEqual("Invalid email");
       assert.equal(saved, undefined);
     });
 
@@ -41,8 +41,6 @@ describe("Model Validations", function (spec) {
 
   spec.it("Should not save model to db if validation fails", function (async) {
     var Mailer = Model('Mailer');
-    
-    console.log("caller again");
 
     Mailer.validate(function (check, item) {
       check(item.email).isEmail();
@@ -63,17 +61,48 @@ describe("Model Validations", function (spec) {
     var MailerZ = Model("MailerZ");
 
     var mailZ = MailerZ.create({name: "Magnus", email: "Boom"});
-    console.log("called");
+    console.log("validation spec called");
     
     mailZ.save(async(function (err, saved) {
       if (err) throw err;
-      console.log("saving");
-      //MailerZ.where("name", "Magnus", async(function (err, mailers) {
-      //  mailers.length.should().beEqual(1);
-      //}));
+      MailerZ.where("name", "Magnus", async(function (err, mailers) {
+        mailers.length.should().beEqual(1);
+      }));
     }));
+  });
+
+  spec.it("Should return list of validation errors", function (async) {
+    
+    var Mailer = Model('Mailer');
+    Mailer.validate(function (check, item) {
+      check(item.name).len(10,30);
+      check(item.email).isEmail();
+      
+    });
+
+    var mail1 = Mailer.create({name: "Harris", email: "Boom"});
+    mail1.save(function (err, item) {
+      
+      err.length.should().beEqual(2);
+    });
+
+  });
+
+  spec.it("Should return an array of error if exception occurs in validation", function () {
+    var Mailer = Model('Mailer');
+    Mailer.validate(function (check, item) {
+      throw "Weird error here" 
+    });
+
+    var mail1 = Mailer.create({name: "Harris", email: "Boom"});
+    mail1.save(function (err, item) {
+      
+      err.length.should().beEqual(1);
+      err[0].should().beEqual("Weird error here");
+    });
+
   });
 
 });
 
-*/
+
