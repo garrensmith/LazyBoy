@@ -34,13 +34,14 @@ describe('Save callback',function (spec) {
 
   spec.it("Should call afterSave after save", function (async) {
     var Blog = Model('Blog');
+    
+     Blog.afterSave(function (blog) {
+      assert.notEqual(blog.id,null);
+    });
 
     var blog_post = Blog.create({title: "hello again", post:"My 2nd demo post"});
     blog_post.save();
 
-    Blog.afterSave(async(function (blog) {
-      assert.notEqual(blog.id,null);
-    }));
   })
 
   spec.it("Should not fire for different model", function (async) {

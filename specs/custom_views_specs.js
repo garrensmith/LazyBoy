@@ -15,12 +15,8 @@ describe("Custom views", function (spec) {
     });
 
     Model.load(function () {
-     // done();
     });
-    done();
-  });
 
-  spec.beforeEach(function (done) {
     var Album = Model('Album');
     Album.create({band: "Incubus", rating: 5, title: "Fungus Amongus"}).save();
       Album.create({band: "Incubus", rating: 3, title: "S.C.I.E.N.C.E."}).save(); 
@@ -29,11 +25,10 @@ describe("Custom views", function (spec) {
       Album.create({band: "Incubus", rating: 2, title: "A Crow Left of the Murder..."}).save(); 
       Album.create({band: "Incubus", rating: 3, title: "Light Grenades"}).save();
       Album.create({band: "Incubus", rating: 5, title: "If Not Now, When?"}).save(function () {
-        //done();
+        done();
 
       });
 
-      done();
     });
 
   
@@ -42,7 +37,7 @@ describe("Custom views", function (spec) {
   spec.it("Should be able to define custom view for model", function (async) {
     var Album = Model('Album');
     Album.view('BestIncubusAlbums', async( function (err, albums) {
-      albums.length.should().beEqual(2);
+      albums.length.should().beEqual(3);
     }));
 
   });
