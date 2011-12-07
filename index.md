@@ -7,6 +7,10 @@ title: Lazyboy
 
 LazyBoy is a Couchdb Object Document Model. It has full support for relations, type casting, custom views and querying.
 
+# Need Help?
+
+Ask questions on the #lazyboy IRC channel.
+
 # Cheat Sheet
 
 ## Defining a model
