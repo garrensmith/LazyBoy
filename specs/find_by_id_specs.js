@@ -2,12 +2,11 @@ var describe = require('Jody').describe,
     cradle = require('cradle'),
     assert = require('assert'),
     Model = require('../lib/index'),
-    db,
+    db = require('./spec_helper').db,
     User;
  
 describe("Find document by Id").   
     beforeAll(function (done) {
-       db = new(cradle.Connection)().database('lazyboy_tests');
         Model.define('User', {name: String });
         Model.load();
         

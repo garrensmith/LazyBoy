@@ -2,11 +2,10 @@ var assert = require('assert'),
     describe = require('Jody').describe,
     cradle = require('cradle'),
     Model = require('../lib/index'),
-    db;
+    db = require('./spec_helper').db;
 
 describe("Saving Item").
 beforeAll(function (done) {
-  db = new(cradle.Connection)().database('lazyboy_tests');
 
   Model.define('User', {
   //  id: String,

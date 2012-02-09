@@ -1,7 +1,7 @@
 var cradle = require('cradle'),
     describe = require('Jody').describe,
     Model = require('../lib/index.js'),
-    db;
+    db = require('./spec_helper').db;
 
 /*
 describe("Embedding documents").

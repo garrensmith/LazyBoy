@@ -1,10 +1,9 @@
 var describe = require('Jody').describe,
     cradle = require('cradle'), Model = require('../lib/index'),
-    db;
+    db = require('./spec_helper').db;
 
 describe("Loading model with referenced models").
 beforeAll(function (done) {
-  db = new(cradle.Connection)().database('lazyboy_tests');
   
   var Author = Model.define('Author', {
     name: String,

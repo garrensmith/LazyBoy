@@ -2,11 +2,11 @@ var describe = require('Jody').describe,
     assert = require('assert'),
     cradle = require('cradle'),
     Model = require('../lib/index'),
+    db = require('./spec_helper').db,
     BlogPost, Comment;
 
 describe("Saving multiple embedded docs").
   beforeAll(function (done) {
-    db = new(cradle.Connection)().database('lazyboy_tests');
 
     Comment = Model.define("Comment", {
       name: String,

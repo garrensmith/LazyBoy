@@ -2,12 +2,11 @@ var describe = require('Jody').describe,
     assert = require('assert'),
     cradle = require('cradle'),
     Model = require('../lib/index'),
-    db, Owner, AddressBook;
+    db = require('./spec_helper').db, 
+    Owner, AddressBook;
 
 describe("Simple Embedding of Single Doc").
   beforeAll(function (done) {
-    db = new(cradle.Connection)().database('lazyboy_tests');
-
     Owner = Model.define("Owner", {
       name: String
     });
