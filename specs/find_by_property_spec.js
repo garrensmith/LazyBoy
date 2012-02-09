@@ -28,7 +28,7 @@ describe("Finding by property").
     }));
   
   }).
-  it("Should allow different query names", function (async) {
+  it("Should find any existing user by first name", function (async) {
     var User = Model("User");
     User.where("name","Joshua",async(function (err, users) {
       users.length.should().beEqual(1);
@@ -45,7 +45,7 @@ describe("Finding by property").
       users.length.should().beEqual(0);
     }));
   }).
-  it("Should return if view not exist", function (async) {
+  it("Should return 'missing_named_view' view not exist", function (async) {
     var User = Model("User");
     
     User.where("name123","Henry", async(function (err, users) {
@@ -68,6 +68,8 @@ describe("Finding by property").
   
    Another_User.create({name:"Joshua"}).save(async(function () {
     User.where("name","Joshua", async(function (err, users) {
+      console.log("surname thing");
+      console.dir(users);
       users.length.should().beEqual(1);
       users[0].surname.should().beEqual("James");
     }));
