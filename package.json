@@ -3,7 +3,7 @@
   "name": "LazyBoy",
   "description": "A object document mapper for couchdb",
   "keywords": ["Couchdb", "db", "ORM", "ODM", "couch"],
-  "version": "0.1.6",
+  "version": "0.1.7",
   "homepage": "http://garrensmith.com/LazyBoy",
   "repository": {
     "type": "git",
