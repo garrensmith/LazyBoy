@@ -117,4 +117,30 @@ describe('Create Model').
     created_user.surname.should().beEqual('Smith');
     assert.equal(created_user.age, undefined);
 
-  });
+  }).
+  it("Should handle booleans correctly", function() {
+    Model.define('CareBear', {
+      name: String,
+      happy: {type: Boolean, default:true}
+    });
+
+    var bear1 = Model('CareBear').create({
+      name: "Bear1",
+      happy: false
+    });
+    
+    bear1.happy.should().beFalse();
+
+    var bear2 = Model('CareBear').create({
+      name: "Bear2",
+      happy: true
+    });
+
+    bear2.happy.should().beTrue();
+
+    var bear3 = Model('CareBear').create({
+      name: "Bear1",
+    });
+
+    bear3.happy.should().beTrue();
+  }); 
