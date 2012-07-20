@@ -95,7 +95,24 @@ it("Should have a created date", function (async) {
 
   }));
 
-})/*.
+}).
+it("Should return a json version of model", function (async) {
+   var user = Model('User').create({
+    id : "Jimi",
+    name : "Jimi",
+    surname : "Hendrix"
+  });
+
+   var attr = {
+    id : "Jimi",
+    name : "Jimi",
+    surname : "Hendrix"
+  };
+
+   var user_json = user.toJSON()
+   user_json.name.should().beEqual(attr.name);
+   user_json.surname.should().beEqual(attr.surname);
+});/*.
 it("Should have an update date that gets updated with each save", function (async) {
   var user = Model.create('User');
   user.id = "Jimmy";
