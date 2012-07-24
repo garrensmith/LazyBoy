@@ -62,9 +62,12 @@ Will return an array of all documents that fit the criteria
 
 #What needs doing?
 
-* Should we allow custom ID's?
-* Better Type casting
-* Validations
+* Chainable callbacks
+* Count query
+* Define model_type field stored in db
+* Multiple db support
+* Improved logging
+* More advance querying
 
 #Changelog
 20 July 2012 - Added toJSON function on Document

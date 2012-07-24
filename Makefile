@@ -5,5 +5,8 @@ site:
   	&& cp -fr /tmp/docs/* ./docs \
 		&& echo "done"
 
+test:
+	@NODE_ENV=test mocha specs/* --reporter spec --require should --ignore-leaks
+
 
 .PHONY: site

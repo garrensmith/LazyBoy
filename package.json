@@ -5,22 +5,27 @@
   "keywords": ["Couchdb", "db", "ORM", "ODM", "couch"],
   "version": "0.1.10",
   "homepage": "http://garrensmith.com/LazyBoy",
+
   "repository": {
     "type": "git",
     "url": "git://github.com/garrensmith/lazyboy.git"
   },
+
   "main": "lib/index.js",
+
   "engines": {
     "node": ">0.4.0"
   },
+
   "dependencies": {
     "cradle": ">=0.5.5",
     "coloured-log":">=0.9.6",
     "async":">=0.1.9",
     "validator": ">=0.3.4"
     },
+
   "devDependencies": {
-      "mocha": "*"
-    , "should": "*"
-    },
+      "mocha": "*",
+     "should": "*"
+    }
 }

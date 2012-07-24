@@ -1,11 +1,11 @@
 var assert = require('assert'),
-    describe = require('Jody').describe,
+    db = require('./spec_helper').db,
     Model = require('../lib/index');
 
 
-describe("Model can have custom functions", function (spec) {
+describe("Model can have custom functions", function () {
 
-  spec.beforeAll(function (done) {
+  before(function (done) {
     var Vehicle = Model.define('Vehicle', {
       name: String,
       gear: {type: Number, default: 1}
@@ -28,38 +28,40 @@ describe("Model can have custom functions", function (spec) {
     done();
   });
 
-  spec.it("Should have custom defined method", function () {
+  it("Should have custom defined method", function () {
     var Vehicle = Model('Vehicle');
     
     var ford = Vehicle.create({name: "Ford Fiesta"});
 
-    assert.notEqual(ford.sound, null);
+    ford.should.have.property('sound');
+    //assert.equal(ford.sound,null)
   });
 
-  spec.it("Should be able to be called", function () {
+  it("Should be able to be called", function () {
     var Vehicle = Model('Vehicle');
 
     var bmw =  Vehicle.create({name: "BMW"});
 
-    bmw.sound().should().beEqual("Rooooooooom");
+    bmw.sound().should.equal("Rooooooooom");
 
   });
 
-  spec.it("Should be able to pass parameters to it", function () {
+  it("Should be able to pass parameters to it", function () {
     var Vehicle = Model('Vehicle');
     
     var ford = Vehicle.create({name: "Ford Fiesta"});
-    ford.change_gear(3).should().beEqual("changing from 1 to 3");
+    ford.change_gear(3).should.equal("changing from 1 to 3");
 
   });
 
-  spec.it("Should not be accessible on other models", function () {
+  it("Should not be accessible on other models", function () {
     var Airplane = Model('Airplane');
     var cessna = Airplane.create({name: "Cessna"});
 
-    assert.equal(cessna.sound,null)
+    cessna.should.not.have.property('sound');
 
   });
 
 
 });
+
