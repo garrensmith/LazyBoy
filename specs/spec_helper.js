@@ -1,20 +1,23 @@
 var db_connection = require('../lib/connection.js'),
-    cradle = require('cradle');
+    cradle = require('cradle'),
+    async = require('async');
 
 //var db = module.exports.db = new (cradle.Connection)('https://garrensmith.cloudant.com','443',{secure: true}).database('lazyboy_ci_test');
 var db = module.exports.db = new (cradle.Connection)().database('lazyboy_tests');
 
 
 before(function(done) {
-    console.log("cleaning db");
-    db.get('_all_docs', function (err, res) {
-        
-        JSON.parse(res).forEach(function (item) {
-            db.remove(item.id, item.value.rev, function (err, res) {});
-        });
-        db_connection.create_connection('lazyboy_tests');
-        done();
+
+  console.log("cleaning db");
+  db.get('_all_docs', function (err, res) {
+
+    async.forEach(JSON.parse(res), function (item, cb) {
+      db.remove(item.id, item.value.rev, function (err, res) {cb();});
+    }, function () {
+      done();
+      db_connection.create_connection('lazyboy_tests');
     });
+  });
 
 });
 

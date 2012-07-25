@@ -8,21 +8,15 @@ describe('Save callback',function () {
       post: String,
       url: String
     });
-    var called = false;
 
     Model.load(function () {
-
-      if (!called) {
-        done();
-        called = true;
-      }
+      done();
     });
   })
 
 
   it("should called beforeSave before Save", function (done) {
     var Blog = Model('Blog');
-    console.log("hello fromsave");
 
     Blog.beforeSave(function (blog ) {
       blog.url = blog.title.split(' ').join('-');
@@ -40,7 +34,7 @@ describe('Save callback',function () {
   it("Should call afterSave after save", function (done) {
     var Blog = Model('Blog');
 
-    Blog.afterSave(done);
+    Blog.afterSave(function () {done()});
 
     var blog_post = Blog.create({title: "hello again", post:"My 2nd demo post"});
     blog_post.save();

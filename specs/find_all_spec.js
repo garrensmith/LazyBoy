@@ -8,11 +8,13 @@ describe("Getting all models", function () {
 
     var Blog = Model("Blog1");
 
-    Model.load();
+    Model.load(function () {
 
-    Blog.create({title:"First Blog", content:"This is my first blog post"}).save(function (){
-      Blog.create({title:"Second Blog post",content:"This is my second blog post"}).save(function () {
-        done();
+      Blog.create({title:"First Blog", content:"This is my first blog post"}).save(function (){
+        Blog.create({title:"Second Blog post",content:"This is my second blog post"}).save(function () {
+          done();
+        });
+
       });
 
     });

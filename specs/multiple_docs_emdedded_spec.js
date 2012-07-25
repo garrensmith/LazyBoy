@@ -17,8 +17,9 @@ describe("Saving multiple embedded docs", function () {
              comments: {has_many: Comment}
     });
 
-    Model.load();
-    done();
+    Model.load(function () {
+      done();
+    });
 
   })
 

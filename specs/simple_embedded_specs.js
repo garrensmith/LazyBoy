@@ -15,8 +15,7 @@ describe("Simple Embedding of Single Doc", function () {
                 owner: {has_one: Owner}
     });
 
-    Model.load();
-    done();
+    Model.load(function () { done(); });
 
   })
 

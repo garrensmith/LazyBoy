@@ -6,15 +6,17 @@ var db = require('./spec_helper').db,
 describe("Finding by property", function () {
   before(function (done) {
     Model.define("User", {name: String, surname: String});
-    Model.load();
 
-    var User = Model("User");
+    Model.load(function () {
 
-    User.create({name:"Benjamin", surname:"Harper"}).save(function (){
-      User.create({name:"Joshua",surname:"James"}).save(function () {
-        done();
+      var User = Model("User");
+
+      User.create({name:"Benjamin", surname:"Harper"}).save(function (){
+        User.create({name:"Joshua",surname:"James"}).save(function () {
+          done();
+        });
+
       });
-
     });
 
   })

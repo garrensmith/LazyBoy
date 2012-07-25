@@ -15,10 +15,9 @@ describe("Custom views", function () {
     });
 
     Model.load(function () {
-    });
 
-    var Album = Model('Album');
-    Album.create({band: "Incubus", rating: 5, title: "Fungus Amongus"}).save();
+      var Album = Model('Album');
+      Album.create({band: "Incubus", rating: 5, title: "Fungus Amongus"}).save();
       Album.create({band: "Incubus", rating: 3, title: "S.C.I.E.N.C.E."}).save(); 
       Album.create({band: "Incubus", rating: 3, title: "Make Yourself"}).save();
       Album.create({band: "Incubus", rating: 5, title: "Morning View"}).save();
@@ -28,10 +27,11 @@ describe("Custom views", function () {
         done();
 
       });
-
     });
 
-  
+  });
+
+
 
 
   it("Should be able to define custom view for model", function (done) {

@@ -5,7 +5,6 @@ var db = require('./spec_helper').db,
 describe("Loading model with referenced models", function () {
   before(function (done) {
 
-    var called = false;
     var Author = Model.define('Author', {
       name: String,
         surname: String
@@ -21,10 +20,7 @@ describe("Loading model with referenced models", function () {
       var book = Book.create({title: "Chasm City", author: Author.create({name: "Alastair", surname: "Reynolds"})});
 
       book.save(function () {
-        if (called === false) {
           done();
-          called = true;
-        }
       });
     });
 

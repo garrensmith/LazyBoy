@@ -24,8 +24,9 @@ describe("Model can have custom functions", function () {
       return "changing from " + old_gear + " to " + gear;
     });
 
-    Model.load();
-    done();
+    Model.load(function () {
+      done();
+    });
   });
 
   it("Should have custom defined method", function () {

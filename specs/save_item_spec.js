@@ -12,9 +12,7 @@ describe("Saving Item", function () {
       surname: String,
     });
 
-    done();
-
-    Model.load();
+    Model.load(function () { done(); });
   })
 
   it("Should save item into db", function (done) {

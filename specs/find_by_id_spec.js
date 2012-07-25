@@ -8,11 +8,10 @@ describe("Find document by Id", function () {
 
   before(function (done) {
     Model.define('User', {name: String });
-    Model.load();
-
-    User = Model('User');
-
-    done();
+    Model.load(function () {
+      User = Model('User');
+      done();
+    });
   })
 
   it("Should find saved document by id", function (done) {

@@ -17,11 +17,8 @@ describe("Model Validations", function () {
     });
 
     var called = false;
-    Model.load(function () {});
-    if (!called) {
-      done();
-      called = true;
-    }
+    Model.load(function () {done();});
+      //done();
   });
 
   it("Should send error to callback length of email property to small", function () {
@@ -53,10 +50,11 @@ describe("Model Validations", function () {
     var mail1 = Mailer.create({name: "Harris", email: "Boom"});
 
     mail1.save(function (err, saved) {
-      Mailer.where("name", "Harris", function (err, mailers) {
-        err.error.should.equal("not_found");
-        done();
+      err[0].should.equal("Invalid email");
 
+      Mailer.where("name", "Harris", function (query_err, mailers) {
+        mailers.length.should.equal(0);
+        done();
       });
     });
   });

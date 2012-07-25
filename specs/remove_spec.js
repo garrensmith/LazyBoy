@@ -6,8 +6,9 @@ describe("Removing item", function () {
 
   before(function (done) {
     Model.define('Car',{name: String, max_speed: Number});
-    Model.load();
-    done();
+    Model.load(function () {
+      done();
+    });
   })
 
   it("Should remove document from db", function (done) {
