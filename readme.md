@@ -70,6 +70,7 @@ Will return an array of all documents that fit the criteria
 * More advance querying
 
 #Changelog
+25 July 2012 - Bug fixes, change tests to mocha
 20 July 2012 - Added toJSON function on Document
 11 Nov 2011 - Added Validations using node-validator
 13 Sep 2011 - Add Id to serialised model
