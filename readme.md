@@ -3,9 +3,7 @@ LazyBoy Object Modeller
 
 # Oh my word... What have you done?
 
-My experiments into what it takes to create a object mapper for Couchdb. This has been something I've been thinking about for a while and whether its a viable option. 
-
-Currently its purely fun research. I've been reading through [mongoose](https://github.com/LearnBoost/mongoose) and [couch-ar](https://github.com/scottburch/couch-ar) as imspiration.
+Somethings when using Couchdb you want a higher abstraction.
 
 #How do I use this thing?
 
