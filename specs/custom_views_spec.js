@@ -43,5 +43,13 @@ describe("Custom views", function () {
 
   });
 
+  /*it("Should run some in parallel", function (done) {
+
+    Album.parallel_views(['BestIncubusAlbums'], ['WorstIncubusAlbums', {startkey:[1], :endkey[3}], function (err, results) {
+
+    });
+
+  });*/
+
 });
 
