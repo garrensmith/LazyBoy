@@ -18,10 +18,9 @@ describe("Model Validations", function () {
 
     var called = false;
     Model.load(function () {done();});
-      //done();
   });
 
-  it("Should send error to callback length of email property to small", function () {
+  it("Should send error to callback length of email property to small", function (done) {
     var Mailer = Model('Mailer');
 
     Mailer.validate(function (check, item) {
@@ -35,6 +34,7 @@ describe("Model Validations", function () {
 
       err[0].should.equal("Invalid email");
       assert.equal(saved, undefined);
+      done();
     });
 
   });
