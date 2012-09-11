@@ -46,7 +46,7 @@ Will return an array of all documents that fit the criteria
 Will return an array of all documents that fit the criteria
     
     var User = Model('User');
-    User.where(name,"Ben", function (err, users) {
+    User.where("name","Ben", function (err, users) {
         // .. do something with the user
     })
 
