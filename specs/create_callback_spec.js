@@ -9,7 +9,9 @@ describe("Before Create Callback", function () {
         year: Date
       });
 
-    done();
+    Model.load( function () {
+      done();
+    });
 
   })
 

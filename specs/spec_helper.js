@@ -17,7 +17,8 @@ before(function(done) {
     }, function () {
       done();
       //db_connection.create_connection('lazyboy_tests');
-      db_connection.create_connection({url: 'https://garrensmith.iriscouch.com', port: '443', secure:true, db:'lazyboy_test'});
+      //db_connection.create_connection({url: 'https://garrensmith.iriscouch.com', port: '443', secure:true, db:'lazyboy_test'});
+      db_connection.create_connection({url: 'https://garrensmith.cloudant.com', port: '443', secure:true, db:'lazyboy_tests'});
     });
   });
 
