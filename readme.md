@@ -1,5 +1,6 @@
 LazyBoy Object Modeller
 =======================
+[![Build Status](https://secure.travis-ci.org/garrensmith/LazyBoy.png)](http://travis-ci.org/garrensmith/LazyBoy)
 
 # Oh my word... What have you done?
 
