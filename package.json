@@ -19,7 +19,6 @@
 
   "scripts": {
     "test": "make test"
-
   },
 
   "dependencies": {

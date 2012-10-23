@@ -6,7 +6,7 @@ site:
 		&& echo "done"
 
 test:
-	@NODE_ENV=test mocha specs/* --reporter spec --require should --ignore-leaks
+	@NODE_ENV=test mocha specs/* --reporter spec --require should --ignore-leaks --timeout 20000
 
 
 .PHONY: site
