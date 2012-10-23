@@ -78,6 +78,7 @@ describe("Removing item", function () {
     var car = Car.create({name: "honda", max_speed: 25});
 
     car.remove(function (err) {
+      console.log(err.message);
       err.message.should.equal("rev needs to be supplied");
     });
 
