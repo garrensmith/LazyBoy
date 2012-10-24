@@ -42,9 +42,11 @@ describe("Custom views", function () {
 
   it("Should have chainable start and end key", function (done) {
     var RankingThing = Model('RankingThing');
-    RankingThing.view('ByRankAndName').startkey([2, "Thing"]).endkey([3, {}], function (err, things) {
-      things.length.should.equal(3);
-      done();
+    RankingThing.view('ByRankAndName')
+      .startkey([2, "Thing"])
+      .endkey([3, {}], function (err, things) {
+        things.length.should.equal(3);
+        done();
     });
   });
 

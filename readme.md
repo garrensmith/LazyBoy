@@ -79,9 +79,12 @@ Below is a quick cheatsheet but the docs can be found at [http://garrensmith.com
       }
     });
 
-    Band.view('ByRankAndName').startkey([2, "Thing"]).endkey([3, {}]).limit(10).skip(3, function (err, bands) {
-       // will only execute when callback passed through
-
+    Band.view('ByRankAndName')
+      .startkey([2, "Incubus"])
+      .endkey([3, {}])
+      .limit(10)
+      .skip(3, function (err, bands) {
+       // will only execute the chain when a function has a callback passed to it
     });
 
 ## Logging
