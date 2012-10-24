@@ -23,7 +23,6 @@
 
   "dependencies": {
     "cradle": ">=0.5.5",
-    "coloured-log":">=0.9.6",
     "async":">=0.1.9",
     "validator": ">=0.3.4"
     },

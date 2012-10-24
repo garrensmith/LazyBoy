@@ -52,12 +52,7 @@ Will return an array of all documents that fit the criteria
     })
 
 ## Logging
-  To see in detail what is happening the logging can be turned on. This can be done by
-  
-    require('LazyBoy').logger.setLogLevel(1);
-
-  `LazyBoy` uses [Coloured logger](https://github.com/bentruyman/coloured-log) under the covers and uses the same log levels
-    
+Logging has been disabled for now.
 
 #What needs doing?
 

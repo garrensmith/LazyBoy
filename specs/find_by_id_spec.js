@@ -21,12 +21,10 @@ describe("Find document by Id", function () {
     };
 
     db.save(user_doc.id, user_doc, function (err, req) {
-      if (err) return done();
 
       User.find(user_doc.id, function (err, user) {
-        if (err) return done();
-        user.id.should().beEqual(user_doc.id);
-        user.name.should().beEqual("garren");
+        user.id.should.equal(user_doc.id);
+        user.name.should.equal("garren");
         done();
       });
     });
