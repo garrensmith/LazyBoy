@@ -4,11 +4,31 @@ LazyBoy Object Modeller
 
 # Oh my word... What have you done?
 
-Somethings when using Couchdb you want a higher abstraction.
+LazyBoy makes it easier to build applications with Couchdb. It removes the repeatable cruft and makes working with Couchdb as fun as it should be.
 
-#How do I use this thing?
+# 4 easy steps to installation
 
-Below is a quick cheatsheet but the docs can be found [http://garrensmith.com/LazyBoy](http://garrensmith.com/LazyBoy)
+1) Download
+
+    npm install lazyboy
+
+2) Connect to database
+
+    var Model = require('lazyboy')
+    Model.create_connection("my_database");
+
+3) Define a model
+
+    Model.define('User', {
+      name: String
+      surname: {type: String, default: "Rambo"}
+    })
+
+4) Read the docs: [http://garrensmith.com/LazyBoy](http://garrensmith.com/LazyBoy)
+
+# How do I use this it?
+
+Below is a quick cheatsheet but the docs can be found at [http://garrensmith.com/LazyBoy](http://garrensmith.com/LazyBoy)
 
 ## Defining a model
     var Model = require('LazyBoy');
@@ -35,35 +55,46 @@ Below is a quick cheatsheet but the docs can be found [http://garrensmith.com/La
         // .. do something with the user
     })
 
-### Find all
-Will return an array of all documents that fit the criteria
-    
+### Find all or by criteria 
+
     var User = Model('User');
     User.all(function (err, users) {
         // .. do something with the user
     })
 
-### Find by criteria
-Will return an array of all documents that fit the criteria
-    
     var User = Model('User');
     User.where("name","Ben", function (err, users) {
         // .. do something with the user
     })
+
+## Custom Views
+
+    var Band = Model.define("Band",{rank: Number, name: String});
+
+    Band.addView('ByRankAndName',{ 
+      map: function (doc) {
+        if (doc.model_type === 'Band') {
+          emit([doc.rank, doc.name],1);
+        }
+      }
+    });
+
+    Band.view('ByRankAndName').startkey([2, "Thing"]).endkey([3, {}]).limit(10).skip(3, function (err, bands) {
+       // will only execute when callback passed through
+
+    });
 
 ## Logging
 Logging has been disabled for now.
 
 #What needs doing?
 
-* Chainable callbacks
-* Count query
 * Define model_type field stored in db
 * Multiple db support
 * Improved logging
-* More advance querying
 
 #Changelog
+24 October 2012 - Add Chainable Api
 25 July 2012 - Bug fixes, change tests to mocha
 20 July 2012 - Added toJSON function on Document
 11 Nov 2011 - Added Validations using node-validator
