@@ -97,13 +97,13 @@ Logging has been disabled for now.
 * Improved logging
 
 #Changelog
-24 October 2012 - Add Chainable Api
-25 July 2012 - Bug fixes, change tests to mocha
-20 July 2012 - Added toJSON function on Document
-11 Nov 2011 - Added Validations using node-validator
-13 Sep 2011 - Add Id to serialised model
-11 Sep 2011 - Add Before And After Remove Callbacks (Donnie Hedin)
-17 Aug 2011 - Add support for custom methods 
+* 24 October 2012 - Add Chainable Api
+* 25 July 2012 - Bug fixes, change tests to mocha
+* 20 July 2012 - Added toJSON function on Document
+* 11 Nov 2011 - Added Validations using node-validator
+* 13 Sep 2011 - Add Id to serialised model
+* 11 Sep 2011 - Add Before And After Remove Callbacks (Donnie Hedin)
+* 17 Aug 2011 - Add support for custom methods 
 
 #Contributors
 * Donnie Hedin (sofa420)
