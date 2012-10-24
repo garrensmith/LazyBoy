@@ -5,11 +5,11 @@ title: Create,Save and Remove
 Create
 ======
 
-Create a model document as follows:
+Create a new model after it has be defined.
 
-		var User = Model('User');
-		var my_user = User.create({name: "Jimi", surname: "Hendrix"});
-	
+    var User = Model('User');
+    var my_user = User.create({name: "Jimi", surname: "Hendrix"});
+
 This creates an instance but does not save it to the database. 
 
 ## Before create callback
@@ -31,9 +31,9 @@ To save a model to the database.
 			// do something with the model
 		});
 		
-If the model has been saved before it will do the update, if the model has not been saved before it will save it and then return the model in the callback
-with an id property and revision. It will also have two date stamps, the first datestamp is `DateCreated` which is the date the model was first saved and 
-the `DateUpdated` which is the timestamp for when the model was updated
+If the model has been saved before it will update the model otherwise it will create a new model. Once the save is complete it will return the model in the callback
+with an id property and revision. Two date stamps are added to all models, `DateCreated` is the date the model was first saved to Couchdb and 
+the `DateUpdated` which is the timestamp for when the model was last saved to Couchdb.
 
 ## Save Callbacks
 
@@ -48,7 +48,6 @@ Before and after save callbacks are supported. They are defined on the model and
   User.afterSave(function (user) {
       // do something after save model
   });
-
 
 
 Remove
@@ -76,5 +75,4 @@ Two callbacks for the `remove` method are supported.
       // do something after removing model
   });
 
-These are self explanatory and will be called before and after a model has been removed from the database
 

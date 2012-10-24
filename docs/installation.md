@@ -18,11 +18,11 @@ Connect to database
 
 The connection to the database must be setup before anything else will work.
 
-There are two options to define the connection to the database. The fist just supplies the name of the database. This is designed for quick simple connection to a local database and will have the defaults for everything else.
+There are two ways to defining a connection to the database. Just suppling the database name is designed for quick simple connections. It will create a default connection to the local database.
 
       Model.create_connection("my_database");
 
-When more options are required, an options object can be give to the `create_connection` method.
+A options hash can be supplied when more connection parameters are required: 
 
        Model.create_connection({
         url: 'database_url',
@@ -35,25 +35,19 @@ When more options are required, an options object can be give to the `create_con
         secure:true,
     });
 
-If any options are not supplied they will be set to the default value
-
+If any options are not supplied they will be set to the default value. 
 
 Loading Models 
 ==============
 
-
-The models needs to be loaded for LazyBoy to work. This can be done via two ways. The first is to manually require the files where the models are defined and then call 
-
-  Model.load()
-
-This is done after all the models have been defined and in the same file as all the models have been defined. This is for very simple use cases.
-
+For LazyBoy to work correctly all the defined models need to be loaded. Calling `Model.load()` will load all models defined in the file.
 A better way is to keep all the models in a specific folder and point LazyBoy to that directory. To load the Models then:
 
-  Model.load('models')
+  Model.load('models', function () {
+    // this cb called once all models have been loaded
+  })
 
 Important to note is that LazyBoy always loads the models folder relatively from the base folder that the node app was started from.
-
 
 <br />
 <br />
