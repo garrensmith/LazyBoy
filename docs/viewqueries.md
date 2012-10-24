@@ -50,7 +50,30 @@ It is also possible to create custom views for a specific require of a model. Th
 Then to query that view
 
       Album.view('BestIncubusAlbums', function (err, albums) {
-
-      
+        //do something with queries 
       });
+
+### Chainable queries
+
+Custom View options can be chained together. Query will only be executed once one of the methods receives a callback.
+
+    Band.view('ByRankAndName')
+      .startkey([2, "Incubus"])
+      .endkey([3, {}])
+      .limit(10)
+      .skip(3, function (err, bands) {
+       // will only execute the chain when a function has a callback passed to it
+    });
+
+The following options to chain together are available. 
+
+* `key`
+* `startkey`
+* `endkey`
+* `limit`
+* `skip`
+* `descending`
+* `dont_include_docs`
+* `stale`
+
 

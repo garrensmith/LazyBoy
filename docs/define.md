@@ -6,7 +6,7 @@ title: Define Model
 Defining a model
 ================
 
-Before being able to use a document model in your project you need to define it. 
+Before using a model you need to define it. 
 
 	var User =	Model.define('User', {
 			name: String,

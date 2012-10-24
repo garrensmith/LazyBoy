@@ -67,8 +67,7 @@ Below is a quick cheatsheet but the docs can be found at [http://garrensmith.com
         // .. do something with the user
     })
 
-## Custom Views
-
+## Custom View
     var Band = Model.define("Band",{rank: Number, name: String});
 
     Band.addView('ByRankAndName',{ 
