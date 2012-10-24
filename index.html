@@ -1,0 +1,175 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Lazyboy by garrensmith</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">Lazyboy</h1>
+        <p class="header">A object mapper for couchdb for node.js</p>
+
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/garrensmith/LazyBoy/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/garrensmith/LazyBoy/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/garrensmith/LazyBoy">View On GitHub</a></li>
+        </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/garrensmith">garrensmith</a></p>
+
+
+      </header>
+      <section>
+        <h1>LazyBoy Object Modeller</h1>
+
+<h1>Oh my word... What have you done?</h1>
+
+<p>LazyBoy makes it easier to build applications with Couchdb. It removes the repeatable cruft and makes working with Couchdb as fun as it should be.</p>
+
+<h1>4 easy steps to installation</h1>
+
+<p>1) Download</p>
+
+<pre><code>npm install lazyboy
+</code></pre>
+
+<p>2) Connect to database</p>
+
+<pre><code>var Model = require('lazyboy')
+Model.create_connection("my_database");
+</code></pre>
+
+<p>3) Define a model</p>
+
+<pre><code>Model.define('User', {
+  name: String
+  surname: {type: String, default: "Rambo"}
+})
+</code></pre>
+
+<p>4) Read the docs: <a href="http://garrensmith.com/LazyBoy">http://garrensmith.com/LazyBoy</a></p>
+
+<h1>How do I use this it?</h1>
+
+<p>Below is a quick cheatsheet but the docs can be found at <a href="http://garrensmith.com/LazyBoy">http://garrensmith.com/LazyBoy</a></p>
+
+<h2>Defining a model</h2>
+
+<pre><code>var Model = require('LazyBoy');
+
+Model.define('User', {
+  name: String
+  surname: {type: String, default: "Rambo"}
+})
+</code></pre>
+
+<h2>Creating and saving a model</h2>
+
+<pre><code>var user = Model.create('User', {name: "John", surname: "Rambo"});
+
+user.save(function (err, saved_user) {
+    // .. do some other stuff here
+})
+</code></pre>
+
+<h2>Finding a model</h2>
+
+<h3>Finding by Id</h3>
+
+<pre><code>var user_id = "123456";
+
+var User = Model('User');
+User.find(user_id, function (err, user) {
+    // .. do something with the user
+})
+</code></pre>
+
+<h3>Find all or by criteria</h3>
+
+<pre><code>var User = Model('User');
+User.all(function (err, users) {
+    // .. do something with the user
+})
+
+var User = Model('User');
+User.where("name","Ben", function (err, users) {
+    // .. do something with the user
+})
+</code></pre>
+
+<h2>Custom Views</h2>
+
+<pre><code>var Band = Model.define("Band",{rank: Number, name: String});
+
+Band.addView('ByRankAndName',{ 
+  map: function (doc) {
+    if (doc.model_type === 'Band') {
+      emit([doc.rank, doc.name],1);
+    }
+  }
+});
+
+Band.view('ByRankAndName')
+  .startkey([2, "Incubus"])
+  .endkey([3, {}])
+  .limit(10)
+  .skip(3, function (err, bands) {
+   // will only execute the chain when a function has a callback passed to it
+});
+</code></pre>
+
+<h2>Logging</h2>
+
+<p>Logging has been disabled for now.</p>
+
+<h1>What needs doing?</h1>
+
+<ul>
+<li>Define model_type field stored in db</li>
+<li>Multiple db support</li>
+<li>Improved logging</li>
+</ul><h1>Changelog</h1>
+
+<ul>
+<li>24 October 2012 - Add Chainable Api</li>
+<li>25 July 2012 - Bug fixes, change tests to mocha</li>
+<li>20 July 2012 - Added toJSON function on Document</li>
+<li>11 Nov 2011 - Added Validations using node-validator</li>
+<li>13 Sep 2011 - Add Id to serialised model</li>
+<li>11 Sep 2011 - Add Before And After Remove Callbacks (Donnie Hedin)</li>
+<li>17 Aug 2011 - Add support for custom methods </li>
+</ul><h1>Contributors</h1>
+
+<ul>
+<li>Donnie Hedin (sofa420)</li>
+<li>8bitDesigner</li>
+</ul>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		          <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-3810980-9");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
