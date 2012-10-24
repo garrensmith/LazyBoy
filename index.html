@@ -17,11 +17,16 @@
     <div class="wrapper">
       <header>
         <h1 class="header">Lazyboy</h1>
-        <p class="header">A object mapper for couchdb for node.js</p>
+        <p class="header">A Couchdb object mapper for node.js. Removing the repeatable cruft and makes working with Couchdb as fun as it should be.</p>
 
         <ul>
+          <li><a class="buttons-no-image" href="/LazyBoy/docs/installation.html">Installation</a></li>
+          <li><a class="buttons-no-image" href="/LazyBoy/docs/define.html">Define</a></li>
+          <li><a class="buttons-no-image" href="/LazyBoy/docs/crud.html">CRUD</a></li>
+          <li><a class="buttons-no-image" href="/LazyBoy/docs/viewqueries.html">Queries</a></li>
+          <li><a class="buttons-no-image" href="/LazyBoy/docs/embedded.html">Embedded</a></li>
+          <li><a class="buttons-no-image" href="/LazyBoy/docs/validations.html">Validations</a></li>
           <li class="download"><a class="buttons" href="https://github.com/garrensmith/LazyBoy/zipball/master">Download ZIP</a></li>
-          <li class="download"><a class="buttons" href="https://github.com/garrensmith/LazyBoy/tarball/master">Download TAR</a></li>
           <li><a class="buttons github" href="https://github.com/garrensmith/LazyBoy">View On GitHub</a></li>
         </ul>
 
@@ -30,13 +35,13 @@
 
       </header>
       <section>
-        <h1>LazyBoy Object Modeller</h1>
+        <h1> LazyBoy Couchdb ODM for node.js</h1>
 
-<h1>Oh my word... What have you done?</h1>
+<h2>Oh my word... What have you done?</h2>
 
 <p>LazyBoy makes it easier to build applications with Couchdb. It removes the repeatable cruft and makes working with Couchdb as fun as it should be.</p>
 
-<h1>4 easy steps to installation</h1>
+<h2>4 easy steps to installation</h2>
 
 <p>1) Download</p>
 
@@ -57,13 +62,13 @@ Model.create_connection("my_database");
 })
 </code></pre>
 
-<p>4) Read the docs: <a href="http://garrensmith.com/LazyBoy">http://garrensmith.com/LazyBoy</a></p>
+<p>
 
-<h1>How do I use this it?</h1>
+<h2>How do I use this it?</h2>
 
-<p>Below is a quick cheatsheet but the docs can be found at <a href="http://garrensmith.com/LazyBoy">http://garrensmith.com/LazyBoy</a></p>
+<p>Below is a quick cheatsheet but the other pages will have more detail on each section.</p>
 
-<h2>Defining a model</h2>
+<h3>Defining a model</h3>
 
 <pre><code>var Model = require('LazyBoy');
 
@@ -73,7 +78,7 @@ Model.define('User', {
 })
 </code></pre>
 
-<h2>Creating and saving a model</h2>
+<h3>Creating and saving a model</h3>
 
 <pre><code>var user = Model.create('User', {name: "John", surname: "Rambo"});
 
@@ -82,7 +87,7 @@ user.save(function (err, saved_user) {
 })
 </code></pre>
 
-<h2>Finding a model</h2>
+<h3>Finding a model</h3>
 
 <h3>Finding by Id</h3>
 
@@ -107,7 +112,7 @@ User.where("name","Ben", function (err, users) {
 })
 </code></pre>
 
-<h2>Custom Views</h2>
+<h3>Custom Views</h3>
 
 <pre><code>var Band = Model.define("Band",{rank: Number, name: String});
 
@@ -128,17 +133,17 @@ Band.view('ByRankAndName')
 });
 </code></pre>
 
-<h2>Logging</h2>
+<h3>Logging</h3>
 
 <p>Logging has been disabled for now.</p>
 
-<h1>What needs doing?</h1>
+<h2>What needs doing?</h2>
 
 <ul>
 <li>Define model_type field stored in db</li>
 <li>Multiple db support</li>
 <li>Improved logging</li>
-</ul><h1>Changelog</h1>
+</ul><h2>Changelog</h2>
 
 <ul>
 <li>24 October 2012 - Add Chainable Api</li>
@@ -148,7 +153,7 @@ Band.view('ByRankAndName')
 <li>13 Sep 2011 - Add Id to serialised model</li>
 <li>11 Sep 2011 - Add Before And After Remove Callbacks (Donnie Hedin)</li>
 <li>17 Aug 2011 - Add support for custom methods </li>
-</ul><h1>Contributors</h1>
+</ul><h2>Contributors</h2>
 
 <ul>
 <li>Donnie Hedin (sofa420)</li>
