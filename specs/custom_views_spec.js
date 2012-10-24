@@ -14,6 +14,16 @@ describe("Custom views", function () {
       }
     });
 
+
+    Album.addView('ByRatingAndBand',{ 
+      map: function (doc) {
+        if (doc.model_type === 'Album' && doc.band === 'Incubus') {
+          emit([doc.rating, doc.band],1);
+        }
+      }
+    });
+
+
     Model.load(function () {
 
       var Album = Model('Album');
@@ -31,25 +41,14 @@ describe("Custom views", function () {
 
   });
 
-
-
-
   it("Should be able to define custom view for model", function (done) {
     var Album = Model('Album');
     Album.view('BestIncubusAlbums', function (err, albums) {
       albums.length.should.equal(3);
       done();
     });
-
   });
 
-  /*it("Should run some in parallel", function (done) {
-
-    Album.parallel_views(['BestIncubusAlbums'], ['WorstIncubusAlbums', {startkey:[1], :endkey[3}], function (err, results) {
-
-    });
-
-  });*/
 
 });
 
