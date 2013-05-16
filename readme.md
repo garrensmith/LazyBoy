@@ -64,7 +64,14 @@ Below is a quick cheatsheet but the docs can be found at [http://garrensmith.com
 
     var User = Model('User');
     User.where("name","Ben", function (err, users) {
-        // .. do something with the user
+        // .. do something with the users
+    })
+
+### Find first by criteria
+
+    var User = Model('User');
+    User.findFirst('name', 'Ben', function (err, user){
+      // .. do something with the user
     })
 
 ## Custom View
@@ -96,6 +103,7 @@ Logging has been disabled for now.
 * Improved logging
 
 #Changelog
+* 16 May 2013 - Add findFirst
 * 24 October 2012 - Add Chainable Api
 * 25 July 2012 - Bug fixes, change tests to mocha
 * 20 July 2012 - Added toJSON function on Document
@@ -105,6 +113,7 @@ Logging has been disabled for now.
 * 17 Aug 2011 - Add support for custom methods 
 
 #Contributors
+* Sven Bergström (FuzzYspo0N)
 * Donnie Hedin (sofa420)
 * 8bitDesigner
 
