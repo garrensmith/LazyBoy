@@ -113,7 +113,7 @@ Logging has been disabled for now.
 * 17 Aug 2011 - Add support for custom methods 
 
 #Contributors
-* Sven Bergström (FuzzYspo0N)
+* Sven Bergström (underscorediscovery)
 * Donnie Hedin (sofa420)
 * 8bitDesigner
 
