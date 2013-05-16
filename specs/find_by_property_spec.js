@@ -45,6 +45,15 @@ describe("Finding by property", function () {
 
   })
 
+  it("Should find first existing user by first name", function (done) {
+    var User = Model("User");
+    User.findFirst("name","Joshua", function (err, user) {
+      user.name.should.equal("Joshua");
+      user.surname.should.equal("James");
+      done();
+    });
+  })
+
   it("Should return empty array if query not exist", function (done) {
     var User = Model("User");
 
