@@ -26,11 +26,20 @@ Finding by the Id will return only one document with the specified document or n
 
 ## Find by property
 
-LazyBoy creates some generic views to be used with each model. These can be accessed via the `.where` property on each model.
-It takes two arguments the propery to search by and the value of the propery to group by. This method always returns an array of the results.
+LazyBoy creates some generic views to be used with each model. These can be accessed via the `.where` and `.findFirst` property on each model.
+It takes two arguments, the propery to search by, and the value of the propery to group by. 
+
+  `.where(property, value, function(err, items){} )` 
+    - This method always returns an array of the results. The array will be 0 length if none are found.
+  `.findFirst(property, value, function(err, item){} )` 
+    - This method always returns a single element, and err is non-null if not found.
 
       Album.where("band","coldplay", function (err, albums) {
         albums.forEach(....
+      });
+
+      Album.findFirst("band","coldplay", function (err, album) {
+        album. ...
       });
 
 ## Custom views
