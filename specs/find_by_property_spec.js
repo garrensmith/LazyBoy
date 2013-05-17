@@ -47,7 +47,7 @@ describe("Finding by property", function () {
 
   it("Should find first existing user by first name", function (done) {
     var User = Model("User");
-    User.findFirst("name","Joshua", function (err, user) {
+    User.whereFirst("name","Joshua", function (err, user) {
       user.name.should.equal("Joshua");
       user.surname.should.equal("James");
       done();

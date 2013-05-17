@@ -31,7 +31,7 @@ It takes two arguments, the propery to search by, and the value of the propery t
 
 `.where(property, value, function(err, items){} )`   
 - This method always returns an array of the results. The array will be 0 length if none are found.
-`.findFirst(property, value, function(err, item){} )`    
+`.whereFirst(property, value, function(err, item){} )`    
 - This method always returns a single element, and err is non-null if not found.
 
       Album.where("band","coldplay", function (err, albums) {
