@@ -4,7 +4,7 @@ var db_connection = require('../lib/connection.js'),
     cradle = require('cradle'),
     async = require('async');
 
-if (process.env.NODE_ENV === "test") {
+if (process.env.NODE_ENV === "te1st") {
   db_connection.create_connection('lazyboy_tests');
 } else {
   //db_connection.create_connection({url: 'https://garrensmith.iriscouch.com', port: '443', secure:true, db:'lazyboy_test'});

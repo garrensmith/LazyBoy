@@ -2,4 +2,4 @@ language: node_js
 env:
   - NODE_ENV="travis"
 node_js:
-  - "0.8"
+  - "0.10"
