@@ -96,13 +96,13 @@ Below is a quick cheatsheet but the docs can be found at [http://garrensmith.com
 ## Logging
 Logging has been disabled for now.
 
-#What needs doing?
+# What needs doing?
 
 * Define model_type field stored in db
 * Multiple db support
 * Improved logging
 
-#Changelog
+# Changelog
 * 16 May 2013 - Add findFirst
 * 24 October 2012 - Add Chainable Api
 * 25 July 2012 - Bug fixes, change tests to mocha
@@ -112,7 +112,7 @@ Logging has been disabled for now.
 * 11 Sep 2011 - Add Before And After Remove Callbacks (Donnie Hedin)
 * 17 Aug 2011 - Add support for custom methods 
 
-#Contributors
+# Contributors
 * Sven Bergström (underscorediscovery)
 * Donnie Hedin (sofa420)
 * 8bitDesigner
